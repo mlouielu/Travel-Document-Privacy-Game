@@ -6,6 +6,13 @@ const resources = {
   en: {
     translation: {
       "app_name": "PrivacyPro",
+      "landing_title": "Travel Smart, Share Safe",
+      "landing_subtitle": "Can you spot the privacy risks in these travel photos? Test your skills and protect your data!",
+      "start_game": "Start Training",
+      "horror_title": "Why it matters",
+      "horror_1": "Someone can use your PNR to cancel your entire trip while you are at the airport.",
+      "horror_2": "Hackers can change your frequent flyer contact info and steal all your miles.",
+      "horror_3": "Identity thieves use passport photos to open fake bank accounts in your name.",
       "is_safe": "Is this post safe?",
       "analyze_desc": "Analyze the image below.",
       "tap_instruction": "Tap the sensitive data in the image.",
@@ -89,6 +96,13 @@ const resources = {
   "zh-TW": {
     translation: {
       "app_name": "隱私守護者",
+      "landing_title": "聰明旅行，安心分享",
+      "landing_subtitle": "你能找出這些旅遊照片中的隱私風險嗎？測試你的觀察力，保護個人資料！",
+      "start_game": "開始訓練",
+      "horror_title": "為什麼這很重要？",
+      "horror_1": "陌生人可利用訂位代號，在你抵達機場前取消所有行程。",
+      "horror_2": "駭客可更改常客計畫資訊，並盜走你所有的飛行里程。",
+      "horror_3": "身分盜用者可利用護照照片，冒名開設虛假銀行帳戶。",
       "is_safe": "這則貼文安全嗎？",
       "analyze_desc": "請分析下方的圖片。",
       "tap_instruction": "請點擊圖片中的敏感資訊。",
