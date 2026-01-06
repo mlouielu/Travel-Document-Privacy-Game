@@ -7,7 +7,7 @@ I am tired of seeing people sharing their personal information on social network
 > [!NOTE]
 > The quiz is a purely **vibe coding** product built with **Google Gemini**.
 
-![Project Banner](public/banner.svg)
+[![Project Banner](public/banner.svg)](https://mlouielu.github.io/Travel-Document-Privacy-Game/?lang=zh-TW)
 
 ## 🎮 About The Project
 This is an interactive educational game designed to teach travelers about the hidden privacy risks in their travel documents. Through a series of realistic scenarios, players learn to identify sensitive information on **Boarding Passes**, **Passports**, **Luggage Tags**, and **Confirmation Emails** that should never be shared publicly.
