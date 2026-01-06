@@ -5,10 +5,14 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 const resources = {
   en: {
     translation: {
-      "app_name": "PrivacyPro",
+      "app_name": "Travel Privacy Quiz",
       "landing_title": "Travel Smart, Share Safe",
       "landing_subtitle": "Can you spot the privacy risks in these travel photos? Test your skills and protect your data!",
       "start_game": "Start Training",
+      "share_title": "Share your score!",
+      "share_threads": "Share on Threads",
+      "share_generic": "Share Result",
+      "share_text": "I scored {{score}}/{{total}} in the Travel Privacy Game! Can you spot the risks? 🛡️✈️",
       "horror_title": "Why it matters",
       "horror_1": "Someone can use your PNR to cancel your entire trip while you are at the airport.",
       "horror_2": "Hackers can change your frequent flyer contact info and steal all your miles.",
@@ -95,10 +99,14 @@ const resources = {
   },
   "zh-TW": {
     translation: {
-      "app_name": "隱私守護者",
+      "app_name": "旅遊隱私測驗",
       "landing_title": "聰明旅行，安心分享",
       "landing_subtitle": "你能找出這些旅遊照片中的隱私風險嗎？測試你的觀察力，保護個人資料！",
       "start_game": "開始訓練",
+      "share_title": "分享你的成績！",
+      "share_threads": "分享到 Threads",
+      "share_generic": "分享結果",
+      "share_text": "我在旅遊隱私遊戲中拿到了 {{score}}/{{total}} 分！你能找出隱私風險嗎？🛡️✈️",
       "horror_title": "為什麼這很重要？",
       "horror_1": "陌生人可利用訂位代號，在你抵達機場前取消所有行程。",
       "horror_2": "駭客可更改常客計畫資訊，並盜走你所有的飛行里程。",

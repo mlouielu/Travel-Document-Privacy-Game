@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
+import { toPng } from 'html-to-image';
 import { scenarios } from '../data/levels';
 import { SocialPost } from './SocialPost';
 import { PassportCard } from './PassportCard';
@@ -7,15 +8,16 @@ import { BoardingPassCard } from './BoardingPassCard';
 import { AppScreenshotCard } from './AppScreenshotCard';
 import { LuggageTagCard } from './LuggageTagCard';
 import { EmailConfirmationCard } from './EmailConfirmationCard';
-import { ShieldCheck, ShieldAlert, ChevronRight, RefreshCcw, Languages } from 'lucide-react';
+import { ShieldCheck, ShieldAlert, ChevronRight, RefreshCcw, Languages, Share2, AtSign, Download, Camera } from 'lucide-react';
 
 export const Quiz = () => {
   const { t, i18n } = useTranslation();
+  const resultRef = useRef(null);
   const [currentLevelIndex, setCurrentLevelIndex] = useState(0);
   const [hasVoted, setHasVoted] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
-  const [score, setScore] = useState(0);
-  const [gameFinished, setGameFinished] = useState(false);
+  const [score, setScore] = useState(9);
+  const [gameFinished, setGameFinished] = useState(true);
 
   const currentScenario = scenarios[currentLevelIndex];
   const isLastLevel = currentLevelIndex === scenarios.length - 1;
@@ -23,6 +25,62 @@ export const Quiz = () => {
   const toggleLanguage = () => {
     const nextLang = i18n.language === 'en' ? 'zh-TW' : 'en';
     i18n.changeLanguage(nextLang);
+  };
+
+  const handleShareThreads = () => {
+    const text = t('share_text', { score, total: scenarios.length });
+    const url = "https://www.threads.net/intent/post?text=" + encodeURIComponent(text);
+    window.open(url, '_blank');
+  };
+
+  const handleSharePhoto = async () => {
+    if (!resultRef.current) return;
+
+    try {
+        const dataUrl = await toPng(resultRef.current, { backgroundColor: '#f9fafb', cacheBust: true });
+        const blob = await fetch(dataUrl).then(res => res.blob());
+        const file = new File([blob], 'privacy-pro-result.png', { type: 'image/png' });
+
+        const text = t('share_text', { score, total: scenarios.length });
+
+        if (navigator.canShare && navigator.canShare({ files: [file] })) {
+            await navigator.share({
+                files: [file],
+                title: t('app_name'),
+                text: text,
+            });
+        } else {
+            // Fallback: Download
+            const link = document.createElement('a');
+            link.download = 'privacy-pro-result.png';
+            link.href = dataUrl;
+            link.click();
+            alert("Sharing photos is not supported on this browser. Image downloaded instead!");
+        }
+    } catch (err) {
+        console.error("Photo sharing failed:", err);
+    }
+  };
+
+  const handleShareGeneric = async () => {
+    const text = t('share_text', { score, total: scenarios.length });
+    const shareData = {
+        title: t('app_name'),
+        text: text,
+        url: window.location.href
+    };
+
+    try {
+        if (navigator.share) {
+            await navigator.share(shareData);
+        } else {
+            // Fallback to clipboard
+            await navigator.clipboard.writeText(text + " " + window.location.href);
+            alert("Result copied to clipboard!");
+        }
+    } catch (err) {
+        console.error("Share failed:", err);
+    }
   };
 
   const handleVote = (voteRisky) => {
@@ -100,27 +158,63 @@ export const Quiz = () => {
 
   if (gameFinished) {
       return (
-          <div className="max-w-md mx-auto p-6 bg-white rounded-xl shadow-lg text-center">
-              <div className="w-20 h-20 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <ShieldCheck className="w-10 h-10 text-indigo-600" />
+          <div className="max-w-md mx-auto animate-in zoom-in-95 duration-500">
+              {/* Capture Area */}
+              <div ref={resultRef} className="p-8 bg-white rounded-2xl shadow-xl text-center border border-gray-100 mb-6">
+                  <div className="w-20 h-20 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <ShieldCheck className="w-10 h-10 text-indigo-600" />
+                  </div>
+                  <h2 className="text-2xl font-black mb-2 text-gray-900">{t('training_complete')}</h2>
+                  <p className="text-gray-500 mb-6">
+                      {t('score_display', { score, total: scenarios.length })}
+                  </p>
+                  
+                  <div className="bg-gray-50 p-5 rounded-xl text-left text-sm">
+                      <h3 className="font-bold mb-3 text-indigo-900 uppercase tracking-wider text-xs">{t('takeaways')}</h3>
+                      <ul className="space-y-3 text-gray-700">
+                          <li className="flex gap-2 items-start"><div className="w-1.5 h-1.5 rounded-full bg-indigo-400 mt-1.5 shrink-0" />{t('takeaway_1')}</li>
+                          <li className="flex gap-2 items-start"><div className="w-1.5 h-1.5 rounded-full bg-indigo-400 mt-1.5 shrink-0" />{t('takeaway_2')}</li>
+                          <li className="flex gap-2 items-start"><div className="w-1.5 h-1.5 rounded-full bg-indigo-400 mt-1.5 shrink-0" />{t('takeaway_3')}</li>
+                      </ul>
+                  </div>
+                  
+                  <div className="mt-6 pt-6 border-t border-gray-100 flex justify-center">
+                      <div className="flex items-center gap-2">
+                        <div className="bg-indigo-600 p-1 rounded">
+                            <ShieldCheck className="w-3 h-3 text-white" />
+                        </div>
+                        <span className="font-bold text-sm tracking-tight">{t('app_name')}</span>
+                      </div>
+                  </div>
               </div>
-              <h2 className="text-2xl font-bold mb-2">{t('training_complete')}</h2>
-              <p className="text-gray-600 mb-6">
-                  {t('score_display', { score, total: scenarios.length })}
-              </p>
-              
-              <div className="bg-gray-50 p-4 rounded-lg text-left text-sm mb-6">
-                  <h3 className="font-bold mb-2">{t('takeaways')}</h3>
-                  <ul className="list-disc pl-5 space-y-1 text-gray-700">
-                      <li>{t('takeaway_1')}</li>
-                      <li>{t('takeaway_2')}</li>
-                      <li>{t('takeaway_3')}</li>
-                  </ul>
+
+              <div className="space-y-3 mb-8 px-2">
+                  <button 
+                      onClick={handleSharePhoto}
+                      className="w-full py-4 bg-indigo-600 text-white rounded-xl font-bold hover:bg-indigo-700 transition shadow-lg flex items-center justify-center gap-2 active:scale-[0.98]"
+                  >
+                      <Camera className="w-5 h-5" /> {t('share_generic')} & Photo
+                  </button>
+
+                  <div className="grid grid-cols-2 gap-3">
+                      <button 
+                          onClick={handleShareThreads}
+                          className="py-3 bg-black text-white rounded-xl font-bold hover:bg-gray-800 transition flex items-center justify-center gap-2 active:scale-[0.98]"
+                      >
+                          <AtSign className="w-4 h-4" /> Threads
+                      </button>
+                      <button 
+                          onClick={handleShareGeneric}
+                          className="py-3 bg-white text-gray-700 rounded-xl font-bold hover:bg-gray-50 transition flex items-center justify-center gap-2 border border-gray-200 active:scale-[0.98]"
+                      >
+                          <Share2 className="w-4 h-4" /> Link
+                      </button>
+                  </div>
               </div>
 
               <button 
                   onClick={restartGame}
-                  className="w-full py-3 bg-indigo-600 text-white rounded-lg font-bold hover:bg-indigo-700 transition flex items-center justify-center gap-2"
+                  className="w-full py-3 text-gray-400 font-bold hover:text-indigo-600 transition flex items-center justify-center gap-2"
               >
                   <RefreshCcw className="w-4 h-4" /> {t('play_again')}
               </button>
