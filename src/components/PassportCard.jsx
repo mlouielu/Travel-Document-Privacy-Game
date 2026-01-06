@@ -1,10 +1,16 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
-export const PassportCard = ({ details, showLeak, country = 'USA', leakTarget = 'mrz', onInteract }) => {
+export const PassportCard = ({ details, showLeak, country = 'USA', leakTarget = 'mrz', onInteract, partialCover = false }) => {
+
   const { t, i18n } = useTranslation();
+
   const { 
-    surname, givenNames, chineseName, nationality, dob, sex,    expiration, passportNumber, personalIdNumber, birthPlace, authority
+
+    surname, givenNames, chineseName, nationality, dob, sex, 
+
+    expiration, passportNumber, personalIdNumber, birthPlace, authority 
+
   } = details;
   // Mock MRZ generation
   const monthMap = { 'JAN': '01', 'FEB': '02', 'MAR': '03', 'APR': '04', 'MAY': '05', 'JUN': '06', 'JUL': '07', 'AUG': '08', 'SEP': '09', 'OCT': '10', 'NOV': '11', 'DEC': '12' };
@@ -63,6 +69,20 @@ export const PassportCard = ({ details, showLeak, country = 'USA', leakTarget = 
         <div className="relative w-[320px] h-[220px] bg-blue-50/90 p-4 flex flex-col font-sans shadow-inner shrink-0">
             {/* Binding Shadow */}
             <div className="absolute top-0 left-0 right-0 h-4 bg-gradient-to-b from-gray-400/30 to-transparent pointer-events-none z-10"></div>
+
+            {/* Privacy Fail Overlays */}
+            {partialCover && (
+                <>
+                    {/* Cover Photo */}
+                    <div className="absolute top-12 left-4 w-24 h-28 bg-gray-900/95 z-30 rounded-sm flex items-center justify-center border-2 border-dashed border-white/20 rotate-1 shadow-xl">
+                        <span className="text-[10px] text-white/40 font-bold uppercase rotate-12">HIDDEN</span>
+                    </div>
+                    {/* Cover Name */}
+                    <div className="absolute top-20 left-32 w-40 h-8 bg-gray-900/95 z-30 rounded flex items-center justify-center -rotate-1 shadow-lg">
+                        <span className="text-[8px] text-white/40 font-bold uppercase">REDACTED</span>
+                    </div>
+                </>
+            )}
 
             {showLeak && (
                 <div className="absolute top-4 left-0 right-0 text-center pointer-events-none z-20">
@@ -184,6 +204,18 @@ export const PassportCard = ({ details, showLeak, country = 'USA', leakTarget = 
   // DEFAULT USA THEME
   return (
     <div className="relative w-[320px] h-[440px] bg-blue-50 rounded-lg shadow-md p-4 flex flex-col border border-gray-300 transform scale-90 sm:scale-100 origin-center">
+      {/* Privacy Fail Overlays */}
+      {partialCover && (
+        <>
+            <div className="absolute top-16 left-4 w-28 h-36 bg-gray-900 z-30 rounded flex items-center justify-center border-2 border-white/10 rotate-2 shadow-2xl">
+                <span className="text-xs text-white/30 font-bold uppercase rotate-45 tracking-widest italic">Censored</span>
+            </div>
+            <div className="absolute top-20 right-4 w-32 h-20 bg-gray-900 z-30 rounded-lg flex items-center justify-center -rotate-2 shadow-xl border border-white/5">
+                <span className="text-[10px] text-white/20 font-bold">PRIVATE</span>
+            </div>
+        </>
+      )}
+      
       {showLeak && (
         <div className="absolute top-2 left-0 right-0 text-center pointer-events-none z-10">
              <span className="inline-block bg-red-600 text-white text-xs px-2 py-1 rounded font-bold shadow-lg animate-bounce">

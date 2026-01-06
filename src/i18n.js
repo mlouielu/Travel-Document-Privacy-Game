@@ -53,7 +53,7 @@ const resources = {
         "5": {
           "title": "New Passport Arrived!",
           "desc": "Got my new passport today! Ready for the next 10 years of travel! 🌍🛂",
-          "reason": "The bottom two lines (MRZ) contain all the info on the page: Name, Passport Number, DOB, and Expiry. It's readable by bots and scammers instantly."
+          "reason": "The MRZ lines at the bottom contain all your info in a simple format. Anyone can decode your name, passport number, and DOB just by looking at the text!"
         },
         "6": {
           "title": "Luggage Tag",
@@ -73,7 +73,7 @@ const resources = {
         "9": {
           "title": "Ready to Fly",
           "desc": "Passports ready! Let's go! 🛂✈️",
-          "reason": "The MRZ code at the bottom of your passport is meant for machines, but scammers have machines too!"
+          "reason": "Taiwan's MRZ specifically includes your National ID number! Even without a machine, it's easy to decode and steal your permanent identity info."
         }
       },
       "passport": {
@@ -143,7 +143,7 @@ const resources = {
         "5": {
           "title": "新護照到手！",
           "desc": "今天拿到新護照了！準備好迎接下一個十年的旅程！🌍🛂",
-          "reason": "底部的兩行 MRZ 區塊包含頁面上所有的資訊：姓名、護照號碼、生日與有效期。機器人與詐騙集團可以瞬間讀取這些資料。"
+          "reason": "底部的 MRZ 區塊以簡單格式包含了你的所有資訊。即使不用機器，任何人只要看一眼文字就能解讀出你的姓名、護照號碼與生日！"
         },
         "6": {
           "title": "行李吊牌",
@@ -163,7 +163,7 @@ const resources = {
         "9": {
           "title": "準備起飛",
           "desc": "護照準備好了！出發吧！🛂✈️",
-          "reason": "護照底部的 MRZ 代碼是給機器讀的，但詐騙集團也有機器！"
+          "reason": "台灣護照的 MRZ 區塊特別包含了你的身分證字號！即使不用機器，也很容易被解讀並盜用你的永久身分資訊。"
         }
       },
       "passport": {

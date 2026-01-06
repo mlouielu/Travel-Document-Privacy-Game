@@ -82,6 +82,7 @@ export const Quiz = () => {
         showLeak: hasVoted && currentScenario.risky,
         isSafe: !currentScenario.risky,
         leakTarget: currentScenario.leak?.target,
+        partialCover: currentScenario.partialCover,
         onInteract: currentScenario.gamemode === 'find-leak' ? handleObjectClick : undefined
     };
 

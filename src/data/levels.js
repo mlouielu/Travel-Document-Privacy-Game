@@ -169,6 +169,7 @@ export const scenarios = [
     type: "passport",
     country: "TWN",
     gamemode: "find-leak",
+    partialCover: true,
     risky: true,
     details: {
       surname: "LIN",
