@@ -27,7 +27,7 @@ export const LandingPage = ({ onStart }) => {
         </div>
       </div>
 
-      <h1 className="text-4xl font-black text-gray-900 mb-4 tracking-tight leading-tight">
+      <h1 className="text-3xl md:text-4xl font-black text-gray-900 mb-4 tracking-tight leading-tight">
         {t('landing_title')}
       </h1>
       

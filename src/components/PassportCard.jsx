@@ -203,7 +203,7 @@ export const PassportCard = ({ details, showLeak, country = 'USA', leakTarget = 
 
   // DEFAULT USA THEME
   return (
-    <div className="relative w-[320px] h-[440px] bg-blue-50 rounded-lg shadow-md p-4 flex flex-col border border-gray-300 transform scale-90 sm:scale-100 origin-center">
+    <div className="relative w-[320px] h-[440px] bg-blue-50 rounded-lg shadow-md p-4 flex flex-col border border-gray-300 transform scale-[0.85] sm:scale-100 origin-center">
       {/* Privacy Fail Overlays */}
       {partialCover && (
         <>

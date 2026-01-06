@@ -7,7 +7,7 @@ export const BoardingPassCard = ({ details, showLeak, isSafe, leakTarget, onInte
   const isLeakVisible = (target) => showLeak && (leakTarget === target || leakTarget === 'qr-code');
 
   return (
-    <div className="relative w-[340px] bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden transform scale-90 sm:scale-100 origin-center">
+    <div className="relative w-[340px] bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden transform scale-[0.8] xs:scale-90 sm:scale-100 origin-center">
       {/* Top Strip */}
       <div className="bg-indigo-600 h-4"></div>
       

@@ -16,16 +16,11 @@ export const Quiz = () => {
   const [currentLevelIndex, setCurrentLevelIndex] = useState(0);
   const [hasVoted, setHasVoted] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
-  const [score, setScore] = useState(9);
-  const [gameFinished, setGameFinished] = useState(true);
+  const [score, setScore] = useState(0);
+  const [gameFinished, setGameFinished] = useState(false);
 
   const currentScenario = scenarios[currentLevelIndex];
   const isLastLevel = currentLevelIndex === scenarios.length - 1;
-
-  const toggleLanguage = () => {
-    const nextLang = i18n.language === 'en' ? 'zh-TW' : 'en';
-    i18n.changeLanguage(nextLang);
-  };
 
   const handleShareThreads = () => {
     const text = t('share_text', { score, total: scenarios.length });
@@ -94,7 +89,7 @@ export const Quiz = () => {
 
   const handleObjectClick = (target) => {
     if (hasVoted) return;
-    
+
     // In 'find-leak' mode, clicking the right target is "Correct"
     if (target === currentScenario.leak.target) {
         setIsCorrect(true);
@@ -168,7 +163,7 @@ export const Quiz = () => {
                   <p className="text-gray-500 mb-6">
                       {t('score_display', { score, total: scenarios.length })}
                   </p>
-                  
+
                   <div className="bg-gray-50 p-5 rounded-xl text-left text-sm">
                       <h3 className="font-bold mb-3 text-indigo-900 uppercase tracking-wider text-xs">{t('takeaways')}</h3>
                       <ul className="space-y-3 text-gray-700">
@@ -177,7 +172,7 @@ export const Quiz = () => {
                           <li className="flex gap-2 items-start"><div className="w-1.5 h-1.5 rounded-full bg-indigo-400 mt-1.5 shrink-0" />{t('takeaway_3')}</li>
                       </ul>
                   </div>
-                  
+
                   <div className="mt-6 pt-6 border-t border-gray-100 flex justify-center">
                       <div className="flex items-center gap-2">
                         <div className="bg-indigo-600 p-1 rounded">
@@ -189,7 +184,7 @@ export const Quiz = () => {
               </div>
 
               <div className="space-y-3 mb-8 px-2">
-                  <button 
+                  <button
                       onClick={handleSharePhoto}
                       className="w-full py-4 bg-indigo-600 text-white rounded-xl font-bold hover:bg-indigo-700 transition shadow-lg flex items-center justify-center gap-2 active:scale-[0.98]"
                   >
@@ -197,13 +192,13 @@ export const Quiz = () => {
                   </button>
 
                   <div className="grid grid-cols-2 gap-3">
-                      <button 
+                      <button
                           onClick={handleShareThreads}
                           className="py-3 bg-black text-white rounded-xl font-bold hover:bg-gray-800 transition flex items-center justify-center gap-2 active:scale-[0.98]"
                       >
                           <AtSign className="w-4 h-4" /> Threads
                       </button>
-                      <button 
+                      <button
                           onClick={handleShareGeneric}
                           className="py-3 bg-white text-gray-700 rounded-xl font-bold hover:bg-gray-50 transition flex items-center justify-center gap-2 border border-gray-200 active:scale-[0.98]"
                       >
@@ -212,7 +207,7 @@ export const Quiz = () => {
                   </div>
               </div>
 
-              <button 
+              <button
                   onClick={restartGame}
                   className="w-full py-3 text-gray-400 font-bold hover:text-indigo-600 transition flex items-center justify-center gap-2"
               >
@@ -224,24 +219,13 @@ export const Quiz = () => {
 
   return (
     <div className="w-full max-w-lg mx-auto pb-20">
-      {/* Language Switcher */}
-      <div className="flex justify-end mb-4 px-4">
-          <button 
-            onClick={toggleLanguage}
-            className="flex items-center gap-1.5 text-xs font-bold text-gray-500 hover:text-indigo-600 transition-colors bg-white px-3 py-1.5 rounded-full border border-gray-200 shadow-sm"
-          >
-            <Languages className="w-3.5 h-3.5" />
-            {i18n.language === 'en' ? '中文' : 'English'}
-          </button>
-      </div>
-
       {/* Progress Bar */}
       <div className="flex gap-1 mb-4 px-4">
         {scenarios.map((_, idx) => (
-            <div 
-                key={idx} 
+            <div
+                key={idx}
                 className={`h-1 flex-1 rounded-full transition-colors ${
-                    idx < currentLevelIndex ? 'bg-indigo-500' : 
+                    idx < currentLevelIndex ? 'bg-indigo-500' :
                     idx === currentLevelIndex ? 'bg-indigo-200' : 'bg-gray-200'
                 }`}
             />
@@ -255,7 +239,7 @@ export const Quiz = () => {
           </p>
       </div>
 
-      <SocialPost 
+      <SocialPost
         username={currentScenario.type === 'passport' ? 'travel_guru_99' : 'adventurer_jane'}
         description={t(`scenarios.${currentScenario.id}.desc`)}
       >
@@ -272,14 +256,14 @@ export const Quiz = () => {
                      </div>
                 ) : (
                 <div className="grid grid-cols-2 gap-4">
-                    <button 
+                    <button
                         onClick={() => handleVote(false)}
                         className="py-3 px-4 rounded-xl border-2 border-green-500 text-green-700 font-bold hover:bg-green-50 transition flex flex-col items-center gap-1"
                     >
                         <ShieldCheck className="w-6 h-6" />
                         {t('safe')}
                     </button>
-                    <button 
+                    <button
                         onClick={() => handleVote(true)}
                         className="py-3 px-4 rounded-xl border-2 border-red-500 text-red-700 font-bold hover:bg-red-50 transition flex flex-col items-center gap-1"
                     >
@@ -295,14 +279,14 @@ export const Quiz = () => {
                         <div>
                             <h3 className="font-bold">{isCorrect ? t('correct') : t('incorrect')}</h3>
                             <p className="text-sm mt-1">
-                                {currentScenario.risky 
+                                {currentScenario.risky
                                     ? t(`scenarios.${currentScenario.id}.reason`)
                                     : t(`scenarios.${currentScenario.id}.safe_msg`)}
                             </p>
                         </div>
                     </div>
-                    
-                    <button 
+
+                    <button
                         onClick={handleNext}
                         className="w-full py-3 bg-indigo-600 text-white rounded-lg font-bold hover:bg-indigo-700 transition flex items-center justify-center gap-2"
                     >

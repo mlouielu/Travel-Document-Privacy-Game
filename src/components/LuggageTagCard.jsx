@@ -13,7 +13,7 @@ export const LuggageTagCard = ({ details, onInteract, showLeak, leakTarget }) =>
   const isLeakVisible = (target) => showLeak && (leakTarget === target || leakTarget === 'all');
 
   return (
-    <div className="relative w-80 h-48 bg-yellow-400 rounded-xl shadow-xl transform rotate-1 border-4 border-yellow-500 flex flex-col overflow-hidden">
+    <div className="relative w-80 h-48 bg-yellow-400 rounded-xl shadow-xl transform rotate-1 border-4 border-yellow-500 flex flex-col overflow-hidden scale-[0.85] sm:scale-100 origin-center">
       {/* Strap Hole */}
       <div className="absolute top-1/2 -left-3 w-6 h-6 bg-gray-800 rounded-full border-2 border-gray-600 z-20"></div>
       
