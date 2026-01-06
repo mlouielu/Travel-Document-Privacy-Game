@@ -5,7 +5,7 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 const resources = {
   en: {
     translation: {
-      "app_name": "Travel Privacy Quiz",
+      "app_name": "Travel Document Privacy Quiz",
       "landing_title": "Travel Smart, Share Safe",
       "landing_subtitle": "Can you spot the privacy risks in these travel photos? Test your skills and protect your data!",
       "start_game": "Start Training",
@@ -99,7 +99,7 @@ const resources = {
   },
   "zh-TW": {
     translation: {
-      "app_name": "旅遊隱私測驗",
+      "app_name": "旅行文件隱私測驗",
       "landing_title": "聰明旅行，安心分享",
       "landing_subtitle": "你能找出這些旅遊照片中的隱私風險嗎？測試你的觀察力，保護個人資料！",
       "start_game": "開始訓練",
