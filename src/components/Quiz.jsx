@@ -5,6 +5,8 @@ import { SocialPost } from './SocialPost';
 import { PassportCard } from './PassportCard';
 import { BoardingPassCard } from './BoardingPassCard';
 import { AppScreenshotCard } from './AppScreenshotCard';
+import { LuggageTagCard } from './LuggageTagCard';
+import { EmailConfirmationCard } from './EmailConfirmationCard';
 import { ShieldCheck, ShieldAlert, ChevronRight, RefreshCcw, Languages } from 'lucide-react';
 
 export const Quiz = () => {
@@ -30,6 +32,24 @@ export const Quiz = () => {
     setIsCorrect(correct);
     if (correct) setScore(s => s + 1);
     setHasVoted(true);
+  };
+
+  const handleObjectClick = (target) => {
+    if (hasVoted) return;
+    
+    // In 'find-leak' mode, clicking the right target is "Correct"
+    if (target === currentScenario.leak.target) {
+        setIsCorrect(true);
+        setScore(s => s + 1);
+        setHasVoted(true);
+    } else {
+        // If they click something else that isn't the leak
+        // Maybe we just shake or show a temporary "Not this" toast?
+        // For simplicity, let's treat it as "Incorrect" choice immediately, or maybe allowed retries?
+        // Let's stick to the current flow: One chance.
+        setIsCorrect(false);
+        setHasVoted(true);
+    }
   };
 
   const handleNext = () => {
@@ -61,13 +81,18 @@ export const Quiz = () => {
         details: currentScenario.details,
         showLeak: hasVoted && currentScenario.risky,
         isSafe: !currentScenario.risky,
-        leakTarget: currentScenario.leak?.target
+        leakTarget: currentScenario.leak?.target,
+        onInteract: currentScenario.gamemode === 'find-leak' ? handleObjectClick : undefined
     };
 
     if (currentScenario.type === 'passport') {
         return <PassportCard {...commonProps} country={currentScenario.country} />;
     } else if (currentScenario.type === 'app-screenshot') {
         return <AppScreenshotCard {...commonProps} />;
+    } else if (currentScenario.type === 'luggage-tag') {
+        return <LuggageTagCard {...commonProps} />;
+    } else if (currentScenario.type === 'email') {
+        return <EmailConfirmationCard {...commonProps} />;
     }
     return <BoardingPassCard {...commonProps} />;
   };
@@ -130,7 +155,9 @@ export const Quiz = () => {
 
       <div className="text-center mb-6">
           <h1 className="text-xl font-bold text-gray-800">{t('is_safe')}</h1>
-          <p className="text-sm text-gray-500">{t('analyze_desc')}</p>
+          <p className="text-sm text-gray-500">
+              {currentScenario.gamemode === 'find-leak' ? t('tap_instruction') : t('analyze_desc')}
+          </p>
       </div>
 
       <SocialPost 
@@ -144,6 +171,11 @@ export const Quiz = () => {
       <div className="fixed bottom-0 left-0 right-0 p-4 bg-white/90 backdrop-blur border-t border-gray-200 shadow-lg-up z-50">
         <div className="max-w-lg mx-auto">
             {!hasVoted ? (
+                currentScenario.gamemode === 'find-leak' ? (
+                     <div className="text-center p-2 text-gray-500 font-medium italic animate-pulse">
+                        {t('tap_instruction')}
+                     </div>
+                ) : (
                 <div className="grid grid-cols-2 gap-4">
                     <button 
                         onClick={() => handleVote(false)}
@@ -160,6 +192,7 @@ export const Quiz = () => {
                         {t('risky')}
                     </button>
                 </div>
+                )
             ) : (
                 <div className="animate-in slide-in-from-bottom-5 fade-in duration-300">
                     <div className={`p-4 rounded-lg mb-4 flex items-start gap-3 ${isCorrect ? 'bg-green-100 text-green-900' : 'bg-red-100 text-red-900'}`}>

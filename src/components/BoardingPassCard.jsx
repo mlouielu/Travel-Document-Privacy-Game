@@ -1,10 +1,10 @@
 import React from 'react';
 import { Plane } from 'lucide-react';
 
-export const BoardingPassCard = ({ details, showLeak, isSafe }) => {
+export const BoardingPassCard = ({ details, showLeak, isSafe, leakTarget, onInteract }) => {
   const { passengerName, flight, origin, destination, date, seat, pnr, ticketNumber } = details;
 
-  const isLeakHighlighted = showLeak && !isSafe;
+  const isLeakVisible = (target) => showLeak && (leakTarget === target || leakTarget === 'qr-code');
 
   return (
     <div className="relative w-[340px] bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden transform scale-90 sm:scale-100 origin-center">
@@ -52,15 +52,23 @@ export const BoardingPassCard = ({ details, showLeak, isSafe }) => {
         {/* Barcode / PNR Section */}
         <div className="border-t border-dashed border-gray-300 pt-4 relative">
              <div className="flex justify-between items-end">
-                <div className={`text-xs text-gray-400 transition-all duration-300 ${isLeakHighlighted ? 'bg-red-500/10 ring-2 ring-red-500 rounded p-1 -ml-1 -mb-1' : ''}`}>
+                <div 
+                    onClick={() => onInteract && onInteract('pnr')}
+                    className={`text-xs text-gray-400 transition-all duration-300 
+                    ${onInteract ? 'cursor-pointer hover:bg-red-50 ring-1 ring-transparent hover:ring-red-200 p-1 -ml-1 -mb-1 rounded' : ''}
+                    ${isLeakVisible('pnr') ? 'bg-red-500/10 ring-2 ring-red-500 rounded p-1 -ml-1 -mb-1 animate-pulse' : ''}
+                    `}
+                >
                     <div>PNR: <span className="font-bold">{pnr}</span></div>
                     <div>ETKT: <span className="font-bold">{ticketNumber}</span></div>
                 </div>
                 
                 {/* Fake QR Code */}
                 <div 
+                    onClick={() => onInteract && onInteract('qr-code')}
                     className={`w-16 h-16 bg-gray-900 pattern-dots relative
-                        ${isLeakHighlighted ? 'ring-4 ring-red-500 animate-pulse' : ''}
+                        ${onInteract ? 'cursor-pointer hover:ring-2 hover:ring-red-200' : ''}
+                        ${isLeakVisible('qr-code') ? 'ring-4 ring-red-500 animate-pulse' : ''}
                         ${isSafe ? 'opacity-20 blur-sm' : ''}
                     `}
                 >
@@ -71,8 +79,8 @@ export const BoardingPassCard = ({ details, showLeak, isSafe }) => {
                 </div>
              </div>
 
-            {isLeakHighlighted && (
-                <div className="absolute inset-0 flex items-center justify-center bg-red-500/10 rounded pointer-events-none">
+            {showLeak && (
+                <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                      <span className="bg-red-600 text-white text-xs px-2 py-1 rounded font-bold shadow-lg animate-bounce">
                         PNR & ETKT LEAK!
                      </span>

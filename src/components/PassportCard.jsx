@@ -1,11 +1,10 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
-export const PassportCard = ({ details, showLeak, country = 'USA', leakTarget = 'mrz' }) => {
+export const PassportCard = ({ details, showLeak, country = 'USA', leakTarget = 'mrz', onInteract }) => {
   const { t, i18n } = useTranslation();
-  const {
-    surname, givenNames, chineseName, nationality, dob, sex,
-    expiration, passportNumber, personalIdNumber, birthPlace, authority
+  const { 
+    surname, givenNames, chineseName, nationality, dob, sex,    expiration, passportNumber, personalIdNumber, birthPlace, authority
   } = details;
   // Mock MRZ generation
   const monthMap = { 'JAN': '01', 'FEB': '02', 'MAR': '03', 'APR': '04', 'MAY': '05', 'JUN': '06', 'JUL': '07', 'AUG': '08', 'SEP': '09', 'OCT': '10', 'NOV': '11', 'DEC': '12' };
@@ -126,7 +125,11 @@ export const PassportCard = ({ details, showLeak, country = 'USA', leakTarget = 
                             <span className="block text-blue-700 text-[5px] uppercase">{t('passport.nationality')}</span>
                             <span className="text-[7px]">{nationality}</span>
                         </div>
-                        <div className={`flex-1 transition-colors duration-300 rounded px-0.5 -mx-0.5 ${isLeakVisible('personal-id') ? 'bg-red-500/20 ring-1 ring-red-500' : ''}`}>
+                        <div 
+                             onClick={() => onInteract && onInteract('personal-id')}
+                             className={`flex-1 transition-colors duration-300 rounded px-0.5 -mx-0.5 
+                             ${onInteract ? 'cursor-pointer hover:bg-red-50 ring-1 ring-transparent hover:ring-red-200' : ''}
+                             ${isLeakVisible('personal-id') ? 'bg-red-500/20 ring-1 ring-red-500' : ''}`}>
                             <span className="block text-blue-700 text-[5px] uppercase">{t('passport.personal_id')}</span>
                             <span className="font-mono text-[8px]">{personalIdNumber}</span>
                         </div>
@@ -163,16 +166,17 @@ export const PassportCard = ({ details, showLeak, country = 'USA', leakTarget = 
                 </div>
             </div>
 
-            {/* MRZ Area */}
-            <div
-            className={`mt-auto font-mono text-[9px] text-black leading-none tracking-widest p-0.5 -mx-0.5 rounded transition-all duration-300 overflow-hidden whitespace-nowrap
-                ${isLeakVisible('mrz') || isLeakVisible('personal-id') ? 'bg-red-500/20 ring-1 ring-red-500 animate-pulse' : ''}
-            `}
-            >
-            <p>{mrzLine1}</p>
-            <p>{mrzLine2}</p>
-            </div>
-        </div>
+                        {/* MRZ Area */}
+                        <div 
+                        onClick={() => onInteract && onInteract('mrz')}
+                        className={`mt-auto font-mono text-[9px] text-black leading-none tracking-widest p-0.5 -mx-0.5 rounded transition-all duration-300 overflow-hidden whitespace-nowrap
+                            ${onInteract ? 'cursor-pointer hover:bg-red-50 ring-1 ring-transparent hover:ring-red-200' : ''}
+                            ${isLeakVisible('mrz') || isLeakVisible('personal-id') ? 'bg-red-500/20 ring-1 ring-red-500 animate-pulse' : ''}
+                        `}
+                        >
+                        <p>{mrzLine1}</p>
+                        <p>{mrzLine2}</p>
+                        </div>        </div>
       </div>
     );
   }
@@ -232,16 +236,17 @@ export const PassportCard = ({ details, showLeak, country = 'USA', leakTarget = 
         </div>
       </div>
 
-      {/* MRZ Area - The Risk! */}
-      <div
-        className={`mt-auto font-mono text-[11px] leading-tight tracking-widest p-1 rounded transition-all duration-300
-          ${isLeakVisible('mrz') ? 'bg-red-500/20 ring-4 ring-red-500 animate-pulse' : ''}
-        `}
-      >
-        <p>{mrzLine1}</p>
-        <p>{mrzLine2}</p>
-      </div>
-
+            {/* MRZ Area - The Risk! */}
+            <div 
+              onClick={() => onInteract && onInteract('mrz')}
+              className={`mt-auto font-mono text-[11px] leading-tight tracking-widest p-1 rounded transition-all duration-300
+                ${onInteract ? 'cursor-pointer hover:bg-red-50 ring-1 ring-transparent hover:ring-red-200' : ''}
+                ${isLeakVisible('mrz') ? 'bg-red-500/20 ring-4 ring-red-500 animate-pulse' : ''}
+              `}
+            >
+              <p>{mrzLine1}</p>
+              <p>{mrzLine2}</p>
+            </div>
       {showLeak && (
         <div className="absolute bottom-2 left-0 right-0 text-center">
              <span className="inline-block bg-red-600 text-white text-xs px-2 py-1 rounded font-bold shadow-lg animate-bounce">

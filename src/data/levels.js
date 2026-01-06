@@ -101,5 +101,91 @@ export const scenarios = [
       target: "mrz", // Machine Readable Zone
       reason: "The bottom two lines (MRZ) contain all the info on the page: Name, Passport Number, DOB, and Expiry. It's readable by bots and scammers instantly."
     }
+  },
+  {
+    id: 6,
+    title: "Luggage Tag",
+    description: "My bags are packed and ready to go! 🧳✈️ #TravelReady",
+    type: "luggage-tag",
+    gamemode: "find-leak",
+    risky: true,
+    details: {
+      name: "JANE SMITH",
+      phone: "+1 (555) 123-4567",
+      address: "123 MAPLE STREET, SPRINGFIELD, IL 62704",
+      email: "jane.travels@email.com"
+    },
+    leak: {
+      target: "address",
+      reason: "Never post your home address on a public luggage tag photo! It tells everyone where you live and that your house is currently empty."
+    }
+  },
+  {
+    id: 7,
+    title: "Trip Confirmation",
+    description: "Got the email! It's official! 📧✨ #TravelPlans",
+    type: "email",
+    gamemode: "find-leak",
+    risky: true,
+    details: {
+      airline: "Oceanic",
+      pnr: "OC815X",
+      passenger: "JACK SHEPHARD",
+      date: "22 SEP",
+      flight: "OC 815",
+      price: "$850.00"
+    },
+    leak: {
+      target: "pnr",
+      reason: "Your Booking Reference (PNR) is the key to your entire trip. Don't share it!"
+    }
+  },
+  {
+    id: 8,
+    title: "At the Gate",
+    description: "Waiting to board! See you on the other side! 🛫",
+    type: "boarding-pass",
+    gamemode: "find-leak",
+    risky: true,
+    details: {
+      passengerName: "FORD/JAMES",
+      flight: "SA 202",
+      origin: "LAX",
+      destination: "SYD",
+      date: "15 DEC",
+      seat: "42E",
+      pnr: "L0ST42",
+      ticketNumber: "123 4567 8901",
+    },
+    leak: {
+      target: "qr-code",
+      reason: "Barcodes and QR codes are easily readable. They contain your name and PNR."
+    }
+  },
+  {
+    id: 9,
+    title: "Ready to Fly",
+    description: "Passports ready! Let's go! 🛂✈️",
+    type: "passport",
+    country: "TWN",
+    gamemode: "find-leak",
+    risky: true,
+    details: {
+      surname: "LIN",
+      givenNames: "MEI-HUA",
+      chineseName: "林美華",
+      nationality: "TAIWAN",
+      personalIdNumber: "B200000000",
+      dob: "15 AUG 1992",
+      birthPlace: "TAIPEI",
+      sex: "F",
+      expiration: "15 AUG 2032",
+      authority: "MINISTRY OF FOREIGN AFFAIRS",
+      passportNumber: "777666555"
+    },
+    leak: {
+      target: "mrz",
+      reason: "The MRZ code at the bottom of your passport is meant for machines, but scammers have machines too!"
+    }
   }
 ];
