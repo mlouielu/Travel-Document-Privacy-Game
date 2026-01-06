@@ -1,0 +1,119 @@
+<svg width="1200" height="630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e1b4b;stop-opacity:1" /> <!-- Indigo 950 -->
+      <stop offset="100%" style="stop-color:#3730a3;stop-opacity:1" /> <!-- Indigo 800 -->
+    </linearGradient>
+    
+    <!-- Shadow Filter -->
+    <filter id="dropShadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="6"/>
+      <feOffset dx="0" dy="8" result="offsetblur"/>
+      <feComponentTransfer>
+        <feFuncA type="linear" slope="0.4"/>
+      </feComponentTransfer>
+      <feMerge> 
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/> 
+      </feMerge>
+    </filter>
+
+    <!-- Barcode Pattern -->
+    <pattern id="barcode" width="4" height="30" patternUnits="userSpaceOnUse">
+      <rect width="2" height="30" fill="#000"/>
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bgGrad)" />
+
+  <!-- === DOCUMENT COLLAGE === -->
+  <g transform="translate(600, 280)"> <!-- Centered group -->
+
+    <!-- 1. Boarding Pass (Left) -->
+    <g transform="translate(-250, 0) rotate(-15)" filter="url(#dropShadow)">
+      <rect x="-140" y="-80" width="280" height="120" rx="8" fill="white" />
+      <rect x="-140" y="-80" width="280" height="20" rx="8" fill="#4f46e5" /> <!-- Header -->
+      <text x="-130" y="-66" fill="white" font-family="sans-serif" font-weight="bold" font-size="12">BOARDING PASS</text>
+      
+      <!-- Content -->
+      <text x="-120" y="-30" fill="#333" font-family="sans-serif" font-weight="bold" font-size="24">SFO</text>
+      <path d="M-60 -38 L-20 -38 l-5 -5 m5 5 l-5 5" stroke="#999" stroke-width="2" />
+      <text x="-10" y="-30" fill="#333" font-family="sans-serif" font-weight="bold" font-size="24">NRT</text>
+      
+      <text x="-120" y="0" fill="#666" font-family="sans-serif" font-size="10">PASSENGER</text>
+      <text x="-120" y="15" fill="#000" font-family="sans-serif" font-weight="bold" font-size="14">SMITH/JANE</text>
+
+      <!-- LEAK: Barcode -->
+      <rect x="60" y="-40" width="60" height="60" fill="url(#barcode)" opacity="0.8" />
+      <rect x="55" y="-45" width="70" height="70" fill="none" stroke="#ef4444" stroke-width="3" stroke-dasharray="8 4" />
+      <rect x="55" y="-55" width="40" height="16" fill="#ef4444" />
+      <text x="60" y="-43" fill="white" font-family="sans-serif" font-weight="bold" font-size="10">LEAK</text>
+    </g>
+
+    <!-- 2. Passport (Right) -->
+    <g transform="translate(250, 20) rotate(15)" filter="url(#dropShadow)">
+      <!-- Cover -->
+      <rect x="-100" y="-140" width="200" height="280" rx="10" fill="#115e38" /> <!-- Taiwan Green -->
+      
+      <!-- Inside Page (Data Page look) -->
+      <rect x="-90" y="-130" width="180" height="260" rx="5" fill="#f0fdf4" />
+      
+      <!-- Header -->
+      <text x="0" y="-95" text-anchor="middle" fill="#fbbf24" font-family="sans-serif" font-weight="black" font-size="20" letter-spacing="2">TAIWAN</text>
+      
+      <!-- Photo -->
+      <rect x="-80" y="-70" width="60" height="80" fill="#e5e7eb" stroke="#cbd5e1" />
+      <path d="M-50 -40 a15 15 0 0 1 0 30 a20 20 0 0 1 0 20" stroke="#9ca3af" fill="none" /> <!-- Abstract face -->
+
+      <!-- Details Lines -->
+      <line x1="-10" y1="-60" x2="80" y2="-60" stroke="#115e38" stroke-width="2" />
+      <line x1="-10" y1="-40" x2="80" y2="-40" stroke="#115e38" stroke-width="2" />
+      <line x1="-10" y1="-20" x2="60" y2="-20" stroke="#115e38" stroke-width="2" />
+
+      <!-- LEAK: MRZ -->
+      <g transform="translate(0, 90)">
+        <text x="-80" y="0" font-family="monospace" font-size="8" fill="#333">P&lt;TWNCHEN&lt;&lt;WEI&lt;LING&lt;&lt;&lt;&lt;&lt;&lt;&lt;</text>
+        <text x="-80" y="12" font-family="monospace" font-size="8" fill="#333">310000000M9901015TWN&lt;&lt;&lt;&lt;&lt;&lt;</text>
+        
+        <!-- Highlight -->
+        <rect x="-85" y="-10" width="170" height="35" fill="none" stroke="#ef4444" stroke-width="3" stroke-dasharray="8 4" />
+      </g>
+    </g>
+
+    <!-- 3. Email (Center Front) -->
+    <g transform="translate(0, -40)" filter="url(#dropShadow)">
+      <rect x="-140" y="-100" width="280" height="180" rx="12" fill="#fff" stroke="#e5e7eb" stroke-width="1" />
+      <!-- Window Chrome -->
+      <path d="M-140 -88 h280" stroke="#f3f4f6" stroke-width="24" /> 
+      <circle cx="-120" cy="-88" r="4" fill="#ef4444" />
+      <circle cx="-105" cy="-88" r="4" fill="#fbbf24" />
+      <circle cx="-90" cy="-88" r="4" fill="#22c55e" />
+      
+      <!-- Content -->
+      <text x="-120" y="-50" fill="#374151" font-family="sans-serif" font-weight="bold" font-size="14">Booking Confirmed</text>
+      <text x="-120" y="-30" fill="#6b7280" font-family="sans-serif" font-size="10">Your flight to Taipei is ready.</text>
+      
+      <!-- LEAK: PNR -->
+      <g transform="translate(0, 10)">
+        <rect x="-120" y="0" width="240" height="50" fill="#eff6ff" rx="4" />
+        <text x="-100" y="20" fill="#6b7280" font-family="sans-serif" font-size="10">BOOKING REFERENCE</text>
+        <text x="-100" y="40" fill="#2563eb" font-family="monospace" font-weight="bold" font-size="20">R5X9J2</text>
+        
+        <!-- Highlight -->
+        <rect x="-105" y="5" width="100" height="40" fill="none" stroke="#ef4444" stroke-width="3" />
+        <path d="M-5 25 l30 -30" stroke="#ef4444" stroke-width="2" />
+        <text x="30" y="-5" fill="#ef4444" font-family="sans-serif" font-weight="bold" font-size="14">DON'T SHARE!</text>
+      </g>
+    </g>
+
+  </g>
+
+  <!-- Titles -->
+  <g text-anchor="middle" font-family="system-ui, sans-serif" filter="url(#dropShadow)">
+    <text x="600" y="520" font-weight="900" font-size="64" fill="white" letter-spacing="-1">Travel Document Privacy Quiz</text>
+    <text x="600" y="580" font-weight="bold" font-size="42" fill="#fbbf24" letter-spacing="4">旅行文件隱私測驗</text>
+  </g>
+  
+</svg>
