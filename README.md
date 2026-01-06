@@ -3,7 +3,7 @@
 > I am tired of seeing people sharing their personal information on social networks. Let's raise awareness of travel document privacy!  
 > 我受夠了看到大家在社群網路上隨意分享個人資料。讓我們一起提升旅遊文件隱私意識！
 
-![Project Banner](public/banner.svg)
+[![Project Banner](public/banner.svg)](https://mlouielu.github.io/Travel-Document-Privacy-Game/?lang=zh-TW)
 
 ## 🎮 About The Project
 This is an interactive educational game designed to teach travelers about the hidden privacy risks in their travel documents. Through a series of realistic scenarios, players learn to identify sensitive information on **Boarding Passes**, **Passports**, **Luggage Tags**, and **Confirmation Emails** that should never be shared publicly.
