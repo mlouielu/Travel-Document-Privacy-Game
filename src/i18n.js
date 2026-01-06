@@ -12,7 +12,7 @@ const resources = {
       "share_title": "Share your score!",
       "share_threads": "Share on Threads",
       "share_generic": "Share Result",
-      "share_text": "I scored {{score}}/{{total}} in the Travel Privacy Quiz! Can you spot the risks?",
+      "share_text": "I scored {{score}}/{{total}} in the Travel Document Privacy Quiz! Can you spot the risks?",
       "horror_title": "Why it matters",
       "horror_1": "Someone can use your PNR to cancel your entire trip while you are at the airport.",
       "horror_2": "Hackers can change your frequent flyer contact info and steal all your miles.",
