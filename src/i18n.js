@@ -199,6 +199,10 @@ i18n
   .init({
     resources,
     fallbackLng: 'en',
+    detection: {
+      order: ['querystring', 'navigator'],
+      lookupQuerystring: 'lang',
+    },
     interpolation: {
       escapeValue: false
     }
