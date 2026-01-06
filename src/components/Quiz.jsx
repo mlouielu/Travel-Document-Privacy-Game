@@ -23,7 +23,7 @@ export const Quiz = () => {
   const isLastLevel = currentLevelIndex === scenarios.length - 1;
 
   const handleShareThreads = () => {
-    const text = t('share_text', { score, total: scenarios.length });
+    const text = t('share_text', { score, total: scenarios.length }) + " " + window.location.href;
     const url = "https://www.threads.net/intent/post?text=" + encodeURIComponent(text);
     window.open(url, '_blank');
   };
@@ -42,7 +42,7 @@ export const Quiz = () => {
             await navigator.share({
                 files: [file],
                 title: t('app_name'),
-                text: text,
+                text: text + " " + window.location.href,
             });
         } else {
             // Fallback: Download
@@ -155,11 +155,19 @@ export const Quiz = () => {
       return (
           <div className="max-w-md mx-auto animate-in zoom-in-95 duration-500">
               {/* Capture Area */}
-              <div ref={resultRef} className="p-8 bg-white rounded-2xl shadow-xl text-center border border-gray-100 mb-6">
-                  <div className="w-20 h-20 bg-indigo-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <ShieldCheck className="w-10 h-10 text-indigo-600" />
+              <div ref={resultRef} className="p-8 bg-white rounded-2xl shadow-xl text-center border border-gray-100 mb-6 relative overflow-hidden">
+                  {/* Spy Theme Background Stamp */}
+                  <div className="absolute top-10 right-10 -rotate-12 opacity-10 pointer-events-none border-4 border-red-500 p-2 rounded">
+                      <span className="text-4xl font-black text-red-500 uppercase tracking-widest">TOP SECRET</span>
                   </div>
-                  <h2 className="text-2xl font-black mb-2 text-gray-900">{t('training_complete')}</h2>
+
+                  <div className="w-24 h-24 bg-black rounded-lg flex items-center justify-center mx-auto mb-6 shadow-2xl rotate-3 border-2 border-white ring-4 ring-gray-200">
+                      <div className="text-white text-xs font-black tracking-widest border-2 border-white px-2 py-1 uppercase -rotate-3">
+                          CONFIDENTIAL
+                      </div>
+                  </div>
+                  
+                  <h2 className="text-2xl font-black mb-2 text-gray-900 tracking-tight">{t('training_complete')}</h2>
                   <p className="text-gray-500 mb-6">
                       {t('score_display', { score, total: scenarios.length })}
                   </p>
