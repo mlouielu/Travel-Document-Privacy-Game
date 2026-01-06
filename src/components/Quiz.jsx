@@ -8,7 +8,7 @@ import { BoardingPassCard } from './BoardingPassCard';
 import { AppScreenshotCard } from './AppScreenshotCard';
 import { LuggageTagCard } from './LuggageTagCard';
 import { EmailConfirmationCard } from './EmailConfirmationCard';
-import { ShieldCheck, ShieldAlert, ChevronRight, RefreshCcw, Languages, Share2, AtSign, Download, Camera } from 'lucide-react';
+import { ShieldCheck, ShieldAlert, ChevronRight, RefreshCcw, Languages, Share2, AtSign, Download, Camera, Ticket, Book } from 'lucide-react';
 
 export const Quiz = () => {
   const { t, i18n } = useTranslation();
@@ -156,17 +156,40 @@ export const Quiz = () => {
           <div className="max-w-md mx-auto animate-in zoom-in-95 duration-500">
               {/* Capture Area */}
               <div ref={resultRef} className="p-8 bg-white rounded-2xl shadow-xl text-center border border-gray-100 mb-6 relative overflow-hidden">
-                  {/* Spy Theme Background Stamp */}
-                  <div className="absolute top-10 right-10 -rotate-12 opacity-10 pointer-events-none border-4 border-red-500 p-2 rounded">
-                      <span className="text-4xl font-black text-red-500 uppercase tracking-widest">TOP SECRET</span>
-                  </div>
 
-                  <div className="w-24 h-24 bg-black rounded-lg flex items-center justify-center mx-auto mb-6 shadow-2xl rotate-3 border-2 border-white ring-4 ring-gray-200">
-                      <div className="text-white text-xs font-black tracking-widest border-2 border-white px-2 py-1 uppercase -rotate-3">
-                          CONFIDENTIAL
+                  {/* Redacted Document Collage */}
+                  <div className="relative w-48 h-32 mx-auto mb-10 mt-6 flex items-center justify-center">
+                      {/* Mini Ticket - Now Background (z-10) */}
+                      <div className="absolute right-2 w-32 h-14 bg-white rounded-lg shadow-xl rotate-6 border-2 border-gray-200 flex items-center px-3 gap-3 overflow-hidden z-10">
+                          <div className="w-6 h-6 bg-gray-100 rounded-sm"></div>
+                          <div className="flex-1 space-y-1">
+                              <div className="flex gap-1"><div className="w-1/2 h-1 bg-gray-300 rounded-full"></div><div className="w-1/4 h-1 bg-gray-300 rounded-full"></div></div>
+                              <div className="w-full h-1.5 bg-gray-200 rounded-full"></div>
+                              <div className="w-2/3 h-1 bg-gray-200 rounded-full"></div>
+                          </div>
+                          <div className="w-0.5 h-full border-l border-dashed border-gray-300"></div>
+                          <div className="w-4 h-4 bg-gray-800 opacity-10"></div>
+                      </div>
+
+                      {/* Mini Passport (Taiwan Green - Vertical) - Now Foreground (z-20) */}
+                      <div className="absolute left-4 w-20 h-28 bg-green-800 rounded-lg shadow-2xl -rotate-12 border-2 border-green-700 flex flex-col items-center justify-start py-6 px-1 z-20 overflow-hidden">
+                          <div className="w-10 h-10 rounded-full border border-yellow-500/30 mb-2 flex items-center justify-center">
+                             <div className="w-6 h-6 rounded-full bg-blue-900/30"></div>
+                          </div>
+                          <div className="mt-auto flex flex-col items-center">
+                            <div className="text-[8px] text-yellow-500 font-black tracking-[0.2em] leading-none mb-1">TAIWAN</div>
+                            <div className="text-[5px] text-yellow-500 tracking-wider font-bold">PASSPORT</div>
+                          </div>
+                      </div>
+
+                      {/* Top Secret Stamp (Moved from background to top) */}
+                      <div className="absolute inset-0 flex items-center justify-center z-[50] pointer-events-none">
+                          <div className="border-[6px] border-red-600/80 p-3 rounded-lg -rotate-12 bg-white/10 backdrop-blur-[1px]">
+                              <span className="text-xl font-black text-red-600/90 uppercase tracking-widest block leading-none">TOP<br/>SECRET</span>
+                          </div>
                       </div>
                   </div>
-                  
+
                   <h2 className="text-2xl font-black mb-2 text-gray-900 tracking-tight">{t('training_complete')}</h2>
                   <p className="text-gray-500 mb-6">
                       {t('score_display', { score, total: scenarios.length })}
