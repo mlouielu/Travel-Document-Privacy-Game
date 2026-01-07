@@ -5,15 +5,16 @@ export const PassportOverBoardingPassCard = ({ details, showLeak, leakTarget, on
   const { t } = useTranslation();
   const {
     flight = "BA 072",
-    gate = "C57",
+    gate = "C54",
     passengerName = "LEOPOLD/EMR",
     date = "27 NOV",
-    origin = "TPE",
-    destination = "LHR",
+    origin = "GENEVA",
+    destination = "LONDON",
     seat = "2F",
     pnr = "EZQ7O92",
     seq = "091",
     boardingGroup = "GROUP 1",
+    cabinClass = "CLUB EUROPE",
     departs = "13:20"
   } = details;
 
@@ -103,87 +104,51 @@ export const PassportOverBoardingPassCard = ({ details, showLeak, leakTarget, on
           </g>
         </g>
 
-        {/* Philippine Passport covering most of the boarding pass */}
+        {/* Taiwan Passport covering most of the boarding pass */}
         <g transform="translate(40, 150)">
-          {/* Passport cover - maroon color for Philippines */}
-          <rect x="0" y="0" width="240" height="280" fill="#7c2d37" rx="6"/>
+          {/* Passport cover - Green for Taiwan */}
+          <rect x="0" y="0" width="240" height="280" fill="#115e38" rx="6"/>
 
-          {/* Gold emblem circle */}
-          <circle cx="120" cy="70" r="35" fill="none" stroke="#d4af37" strokeWidth="2"/>
-          <circle cx="120" cy="70" r="25" fill="none" stroke="#d4af37" strokeWidth="1"/>
+          {/* National Emblem (simplified as circle from icon) */}
+          <circle cx="120" cy="80" r="30" fill="none" stroke="#fbbf24" strokeWidth="6"/>
+		  <g transform="translate(110, 60),scale(0.15)"fill="#fbbf24">
+		  <polygon points="138.849,24.063 133.389,14.317 124.214,12 119.199,9.905 112.913,2 101.611,4.19 91.103,13.111 75.103,18.508 68.881,25.968 61.706,41.524 49.58,52.127 43.706,63.619 16.246,110.508 7.326,134.794 6.468,150.286 2.151,163.016 9.484,179.968 14.214,201.016 26.246,214.762 37.389,223.302 46.151,243.429 46.532,253.556 56.278,258 59.96,224.254 69.865,202.762 78.5,195.682 97.262,164.921 112.914,102.373 112.659,93.651 129.294,62.762 128.373,34.095 "/>
+			</g>
 
-          {/* Stars (simplified Philippine symbols) */}
-          <circle cx="120" cy="65" r="3" fill="#d4af37"/>
-          <circle cx="110" cy="75" r="2" fill="#d4af37"/>
-          <circle cx="130" cy="75" r="2" fill="#d4af37"/>
-          <circle cx="115" cy="85" r="2" fill="#d4af37"/>
-          <circle cx="125" cy="85" r="2" fill="#d4af37"/>
-
-          {/* Philippine seal center */}
-          <circle cx="120" cy="70" r="8" fill="#1e40af" opacity="0.5"/>
-
-          {/* Text: PILIPINAS */}
+          {/* Text: TAIWAN */}
           <text
             x="120"
-            y="135"
-            fontSize="24"
+            y="170"
+            fontSize="36"
             fontWeight="900"
-            fill="#d4af37"
+            fill="#fbbf24"
             textAnchor="middle"
-            letterSpacing="3"
+            letterSpacing="4"
           >
-            PILIPINAS
+            TAIWAN
           </text>
-
-          {/* Stars decoration */}
-          {[0, 1, 2, 3, 4].map((i) => (
-            <circle
-              key={i}
-              cx={60 + i * 30}
-              cy="155"
-              r="2"
-              fill="#d4af37"
-              opacity="0.6"
-            />
-          ))}
 
           {/* Text: PASSPORT */}
           <text
             x="120"
-            y="175"
-            fontSize="12"
+            y="210"
+            fontSize="18"
             fontWeight="bold"
-            fill="#d4af37"
+            fill="#fbbf24"
             textAnchor="middle"
-            letterSpacing="4"
+            letterSpacing="2"
           >
             PASSPORT
           </text>
 
-          {/* Republic of the Philippines */}
-          <text
-            x="120"
-            y="220"
-            fontSize="8"
-            fill="#d4af37"
-            textAnchor="middle"
-            opacity="0.8"
-          >
-            REPUBLIC OF THE
-          </text>
-          <text
-            x="120"
-            y="232"
-            fontSize="8"
-            fill="#d4af37"
-            textAnchor="middle"
-            opacity="0.8"
-          >
-            PHILIPPINES
-          </text>
+          {/* Biometric Symbol */}
+          <g transform="translate(108, 235)">
+            <rect x="0" y="0" width="24" height="14" rx="2" fill="none" stroke="#fbbf24" strokeWidth="3"/>
+            <circle cx="12" cy="7" r="3" fill="#fbbf24"/>
+          </g>
 
           {/* Border decoration */}
-          <rect x="10" y="10" width="220" height="260" fill="none" stroke="#d4af37" strokeWidth="1" opacity="0.3" rx="4"/>
+          <rect x="10" y="10" width="220" height="260" fill="none" stroke="#fbbf24" strokeWidth="1" opacity="0.3" rx="4"/>
         </g>
 
         {/* Airport background blur effect */}
