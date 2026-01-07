@@ -19,6 +19,8 @@ export const MRZDecoderCard = ({ details, onCorrect }) => {
     { id: 'personal_id', label: t('decoder.personal_id'), line: 1, start: 28, end: 38, color: '#6366f1' },
   ];
 
+  const shuffledFields = React.useMemo(() => [...fields].sort(() => Math.random() - 0.5), []);
+
   const [matches, setMatches] = useState({});
   const [selectedField, setSelectedField] = useState(null);
 
@@ -114,7 +116,7 @@ export const MRZDecoderCard = ({ details, onCorrect }) => {
 
         {/* Labels Grid - Now below the MRZ */}
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 w-full max-w-[310px]">
-          {fields.map(f => (
+          {shuffledFields.map(f => (
             <button
               key={f.id}
               onClick={() => handleLabelClick(f)}

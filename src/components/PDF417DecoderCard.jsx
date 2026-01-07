@@ -5,22 +5,6 @@ export const PDF417DecoderCard = ({ details, onCorrect }) => {
   const { t } = useTranslation();
   const { raw } = details;
   
-  // BCBP 60-char format:
-  // M (0) 1 (1) 
-  // NAME (2-22) 
-  // E (22) 
-  // PNR (23-30) 
-  // ORIGIN (30-33) 
-  // DEST (33-36) 
-  // AIRLINE (36-38) 
-  // FLIGHT (38-43) 
-  // DATE (43-46) 
-  // COMP (46-47) 
-  // SEAT (47-51) 
-  // SEQ (51-56) 
-  // STATUS (56-57) 
-  // END (57-59)
-
   const fields = [
     { id: 'passenger_name', label: t('decoder.passenger_name'), start: 2, end: 22, color: '#ef4444' },
     { id: 'pnr', label: t('decoder.pnr'), start: 23, end: 30, color: '#3b82f6' },
@@ -31,6 +15,8 @@ export const PDF417DecoderCard = ({ details, onCorrect }) => {
     { id: 'seat', label: t('decoder.seat'), start: 48, end: 52, color: '#ec4899' },
     { id: 'sequence', label: t('decoder.sequence'), start: 52, end: 57, color: '#6366f1' },
   ];
+
+  const shuffledFields = React.useMemo(() => [...fields].sort(() => Math.random() - 0.5), []);
 
   const [matches, setMatches] = useState({});
   const [selectedField, setSelectedField] = useState(null);
@@ -119,7 +105,7 @@ export const PDF417DecoderCard = ({ details, onCorrect }) => {
       </div>
 
       <div className="grid grid-cols-2 gap-2 mt-2">
-        {fields.map(field => (
+        {shuffledFields.map(field => (
           <button
             key={field.id}
             onClick={() => handleFieldClick(field)}
