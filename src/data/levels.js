@@ -286,5 +286,14 @@ export const scenarios = [
       raw: "M1LEOPOLD/EMR         EZQ7O92 GVALHRBA 00723319C002F00009100"
     },
     leak: null
+  },
+  {
+    id: 17,
+    title: "The Consequence",
+    type: "pnr-consequence",
+    gamemode: "consequence",
+    risky: true,
+    details: {},
+    leak: null
   }
 ];

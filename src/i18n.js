@@ -21,6 +21,7 @@ const resources = {
       "analyze_desc": "Analyze the image below.",
       "tap_instruction": "Tap the sensitive data in the image.",
       "decode_instruction": "Match the labels to the correct data segments.",
+      "consequence_instruction": "Explore the hacker's portal to see the risks.",
       "safe": "Safe",
       "risky": "Risky",
       "correct": "Correct!",
@@ -116,6 +117,11 @@ const resources = {
           "title": "Decode Boarding Pass",
           "desc": "Can you find the hidden details in the raw boarding pass data?",
           "reason": "Raw BCBP (Bar Coded Boarding Pass) data contains your full name, booking reference (PNR), flight number, and even your seat. This is exactly what hackers scan from your photos!"
+        },
+        "17": {
+          "title": "The Consequence",
+          "desc": "Ever wondered what a hacker can actually do with just your PNR and last name? Welcome to the Hacker's View.",
+          "reason": "With a PNR, a total stranger can cancel your flights, change your travel dates, steal your passport number from the API data, and even access your partial payment info. Never share your PNR!"
         }
       },
       "card": {
@@ -176,6 +182,32 @@ const resources = {
         "date": "Julian Date",
         "seat": "Seat Number",
         "sequence": "Check-in Seq"
+      },
+      "consequences": {
+        "cancel_label": "Cancel Entire Flight",
+        "cancel_text": "One click and your vacation is gone. Scammers do this for fun or ransom.",
+        "data_label": "Steal Passport & DOB",
+        "data_text": "Full access to your API (Advanced Passenger Information) for identity theft.",
+        "modify_label": "Change Flight Date",
+        "modify_text": "Move your flight to next month, leaving you stranded at the airport.",
+        "baggage_label": "Add/Charge Baggage",
+        "baggage_text": "Add 10 extra suitcases to your booking and charge your saved credit card.",
+        "payment_label": "Access Payment Info",
+        "payment_text": "View partial credit card details and billing addresses for phishing.",
+        "field_passport": "Passport No.",
+        "field_dob": "Date of Birth",
+        "field_status": "Flight Status",
+        "field_action": "Action",
+        "field_depart": "Depart Date",
+        "field_new_date": "New Date",
+        "field_allowance": "Allowance",
+        "field_charges": "Total Charges",
+        "field_cardholder": "Cardholder",
+        "field_card": "Card Number",
+        "status_confirmed": "CONFIRMED",
+        "action_cancel": "CANCEL BOOKING",
+        "portal_title": "Manage Booking",
+        "portal_instruction": "A stranger logged in with your details. Click all options to see the exposed data and consequences:"
       }
     }
   },
@@ -197,6 +229,7 @@ const resources = {
       "analyze_desc": "請分析下方的圖片。",
       "tap_instruction": "請點擊圖片中的敏感資訊。",
       "decode_instruction": "請將標籤與正確的資料區塊配對。",
+      "consequence_instruction": "進入駭客視角，看看洩露資訊的後果。",
       "safe": "安全",
       "risky": "有風險",
       "correct": "正確！",
@@ -292,6 +325,11 @@ const resources = {
           "title": "解碼登機證",
           "desc": "你能從原始的登機證資料中找出隱藏的細節嗎？",
           "reason": "原始的 BCBP（條碼登機證）資料包含你的全名、訂位代號 (PNR)、航班編號甚至座位。這正是駭客從你的照片中掃描獲取的資訊！"
+        },
+        "17": {
+          "title": "嚴重的後果",
+          "desc": "想過駭客只靠你的訂位代號和姓氏能做什麼嗎？歡迎來到「駭客視角」。",
+          "reason": "有了訂位代號 (PNR)，陌生人就能取消你的航班、更改旅遊日期、從旅客資料 (API) 中盜取你的護照號碼，甚至存取部分付款資訊。絕對不要分享你的 PNR！"
         }
       },
       "card": {
@@ -349,9 +387,35 @@ const resources = {
         "origin": "出發地",
         "destination": "目的地",
         "flight_no": "航班編號",
-        "date": "出發日期",
+        "date": "Julian 日期",
         "seat": "座位號碼",
         "sequence": "報到序號"
+      },
+      "consequences": {
+        "cancel_label": "取消整個航班",
+        "cancel_text": "只需點擊一下，你的假期就泡湯了。詐騙者常以此尋開心或勒索贖金。",
+        "data_label": "盜取護照與生日",
+        "data_text": "完整存取你的旅客預報資訊 (API)，用於身分盜用。",
+        "modify_label": "更改航班日期",
+        "modify_text": "將你的航班改到下個月，讓你受困在機場。",
+        "baggage_label": "增加/扣款行李",
+        "baggage_text": "在你的訂位中增加 10 件額外行李，並從你儲存的信用卡扣款。",
+        "payment_label": "存取付款資訊",
+        "payment_text": "查看部分信用卡資訊與帳單地址，用於網路釣魚。",
+        "field_passport": "護照號碼",
+        "field_dob": "出生日期",
+        "field_status": "航班狀態",
+        "field_action": "動作",
+        "field_depart": "出發日期",
+        "field_new_date": "新日期",
+        "field_allowance": "行李額度",
+        "field_charges": "總費用",
+        "field_cardholder": "持卡人",
+        "field_card": "卡號",
+        "status_confirmed": "已確認",
+        "action_cancel": "取消訂位",
+        "portal_title": "管理訂位",
+        "portal_instruction": "陌生人利用你的資料登入了系統。請點擊所有選項，查看洩露的資料及後果："
       }
     }
   }

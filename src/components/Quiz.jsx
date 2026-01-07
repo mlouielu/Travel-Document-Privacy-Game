@@ -11,6 +11,7 @@ import { EmailConfirmationCard } from './EmailConfirmationCard';
 import { PassportOverBoardingPassCard } from './PassportOverBoardingPassCard';
 import { MRZDecoderCard } from './MRZDecoderCard';
 import { PDF417DecoderCard } from './PDF417DecoderCard';
+import { PNRConsequenceCard } from './PNRConsequenceCard';
 import { ShieldCheck, ShieldAlert, ChevronRight, RefreshCcw, Languages, Share2, AtSign, Download, Camera, Ticket, Book } from 'lucide-react';
 
 export const Quiz = () => {
@@ -175,6 +176,13 @@ export const Quiz = () => {
             setLevelResults(prev => ({ ...prev, [currentLevelIndex]: true }));
             setHasVoted(true);
         }} />;
+    } else if (currentScenario.type === 'pnr-consequence') {
+        return <PNRConsequenceCard onCorrect={() => {
+            setIsCorrect(true);
+            setScore(s => s + 1);
+            setLevelResults(prev => ({ ...prev, [currentLevelIndex]: true }));
+            setHasVoted(true);
+        }} />;
     }
     return <BoardingPassCard {...commonProps} onInteract={handleObjectClick} />;
   };
@@ -314,13 +322,13 @@ export const Quiz = () => {
 
       <div className="text-center mb-6">
           <h1 className="text-xl font-bold text-gray-800">{t('is_safe')}</h1>
-          <p className="text-sm text-gray-500">
-              {currentScenario.gamemode === 'find-leak' ? t('tap_instruction') :
-               currentScenario.gamemode === 'decode' ? t('decode_instruction') : t('analyze_desc')}
-          </p>
-      </div>
-
-      <SocialPost
+                    <p className="text-sm text-gray-500">
+                        {currentScenario.gamemode === 'find-leak' ? t('tap_instruction') :
+                         currentScenario.gamemode === 'decode' ? t('decode_instruction') :
+                         currentScenario.gamemode === 'consequence' ? t('consequence_instruction') : t('analyze_desc')}
+                    </p>
+                </div>
+                <SocialPost
         username={currentScenario.type === 'passport' ? 'travel_guru_99' : 'adventurer_jane'}
         description={t(`scenarios.${currentScenario.id}.desc`)}
       >
@@ -331,9 +339,10 @@ export const Quiz = () => {
       <div className="fixed bottom-0 left-0 right-0 p-4 bg-white/90 backdrop-blur border-t border-gray-200 shadow-lg-up z-50">
         <div className="max-lg mx-auto">
             {!hasVoted ? (
-                currentScenario.gamemode === 'find-leak' || currentScenario.gamemode === 'decode' ? (
+                currentScenario.gamemode === 'find-leak' || currentScenario.gamemode === 'decode' || currentScenario.gamemode === 'consequence' ? (
                      <div className="text-center p-2 text-gray-500 font-medium italic animate-pulse">
-                        {currentScenario.gamemode === 'find-leak' ? t('tap_instruction') : t('decode_instruction')}
+                        {currentScenario.gamemode === 'find-leak' ? t('tap_instruction') :
+                         currentScenario.gamemode === 'decode' ? t('decode_instruction') : t('consequence_instruction')}
                      </div>
                 ) : (
                 <div className="grid grid-cols-2 gap-4">
