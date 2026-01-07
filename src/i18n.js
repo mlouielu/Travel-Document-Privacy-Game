@@ -57,9 +57,9 @@ const resources = {
           "reason": "Screenshots of booking apps often show the PNR clearly. This is the 'password' to your booking management!"
         },
         "5": {
-          "title": "Mobile Check-in",
+          "title": "Mobile Check-in?",
           "desc": "Checking in on the go! Love how the app hides my details automatically. 📱🔒",
-          "safe_msg": "Excellent! The PNR is masked, so sharing this screenshot is safe."
+          "reason": "Even if the PNR is masked, sharing your flight number, route, and date in real-time is an OSINT risk. It reveals your exact travel schedule and location to anyone online."
         },
         "6": {
           "title": "New Passport Arrived!",
@@ -199,9 +199,9 @@ const resources = {
           "reason": "訂位 App 的截圖通常會清楚顯示 PNR。這就是你管理訂位資訊的「密碼」！"
         },
         "5": {
-          "title": "手機報到",
+          "title": "手機報到？",
           "desc": "隨時隨地辦理報到！App 自動隱藏我的詳細資訊，太棒了！📱🔒",
-          "safe_msg": "太棒了！PNR 已被遮蔽，所以分享這張截圖是安全的。"
+          "reason": "即使 PNR 已被遮蔽，在網路上公開航班編號、航線與日期仍有 OSINT 風險。這會洩露你的確切旅遊行程與即時位置。"
         },
         "6": {
           "title": "新護照到手！",

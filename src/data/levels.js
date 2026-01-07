@@ -78,9 +78,9 @@ export const scenarios = [
   },
   {
     id: 5,
-    title: "Mobile Check-in",
+    title: "Mobile Check-in?",
     type: "app-screenshot",
-    risky: false,
+    risky: true,
     details: {
       airline: "SkyWays",
       flight: "SW 101",
@@ -89,7 +89,9 @@ export const scenarios = [
       passenger: "ALEX JOHNSON",
       pnr: "******"
     },
-    leak: null
+    leak: {
+      target: ["flight", "route", "date"]
+    }
   },
   {
     id: 6,
