@@ -55,26 +55,36 @@ const resources = {
           "reason": "Screenshots of booking apps often show the PNR clearly. This is the 'password' to your booking management!"
         },
         "5": {
-          "title": "New Passport Arrived!",
-          "desc": "Got my new passport today! Ready for the next 10 years of travel! 🌍🛂",
-          "reason": "The MRZ lines at the bottom contain all your info in a simple format. Anyone can decode your name, passport number, and DOB just by looking at the text!"
+          "title": "Mobile Check-in",
+          "desc": "Checking in on the go! Love how the app hides my details automatically. 📱🔒",
+          "safe_msg": "Excellent! The PNR is masked, so sharing this screenshot is safe."
         },
         "6": {
+          "title": "New Passport Arrived!",
+          "desc": "Got my new passport today! Ready for the next 10 years of travel! 🌍🛂",
+          "reason": "The bottom two lines (MRZ) contain all the info on the page: Name, Passport Number, DOB, and Expiry. It's readable by bots and scammers instantly."
+        },
+        "7": {
+          "title": "New Bag Tag",
+          "desc": "Ready to roll! Kept it simple this time. 🧳",
+          "safe_msg": "Smart move! Using a tag that hides your address or only shows minimal contact info prevents home burglary risks."
+        },
+        "8": {
           "title": "Luggage Tag",
           "desc": "My bags are packed and ready to go! 🧳✈️ #TravelReady",
           "reason": "Never post your home address on a public luggage tag photo! It tells everyone where you live and that your house is currently empty."
         },
-        "7": {
+        "9": {
           "title": "Trip Confirmation",
           "desc": "Got the email! It's official! 📧✨ #TravelPlans",
           "reason": "Your Booking Reference (PNR) is the key to your entire trip. Don't share it!"
         },
-        "8": {
+        "10": {
           "title": "At the Gate",
           "desc": "Waiting to board! See you on the other side! 🛫",
           "reason": "Your PNR, Ticket Number, and QR code are all sensitive. Anyone can use them to access or modify your booking!"
         },
-        "9": {
+        "11": {
           "title": "Ready to Fly",
           "desc": "Passports ready! Let's go! 🛂✈️",
           "reason": "Taiwan's MRZ specifically includes your National ID number! Even without a machine, it's easy to decode and steal your permanent identity info."
@@ -149,26 +159,36 @@ const resources = {
           "reason": "訂位 App 的截圖通常會清楚顯示 PNR。這就是你管理訂位資訊的「密碼」！"
         },
         "5": {
+          "title": "手機報到",
+          "desc": "隨時隨地辦理報到！App 自動隱藏我的詳細資訊，太棒了！📱🔒",
+          "safe_msg": "太棒了！PNR 已被遮蔽，所以分享這張截圖是安全的。"
+        },
+        "6": {
           "title": "新護照到手！",
           "desc": "今天拿到新護照了！準備好迎接下一個十年的旅程！🌍🛂",
           "reason": "底部的 MRZ 區塊以簡單格式包含了你的所有資訊。即使不用機器，任何人只要看一眼文字就能解讀出你的姓名、護照號碼與生日！"
         },
-        "6": {
+        "7": {
+          "title": "新行李吊牌",
+          "desc": "準備出發！這次保持簡單。🧳",
+          "safe_msg": "聰明的選擇！使用隱藏地址或僅顯示最少聯絡資訊的吊牌，可避免家中遭竊的風險。"
+        },
+        "8": {
           "title": "行李吊牌",
           "desc": "行李打包好了，準備出發！🧳✈️ #旅行",
           "reason": "千萬不要公開行李吊牌上的住家地址！這會告訴所有人你住在哪裡，而且你現在不在家。"
         },
-        "7": {
+        "9": {
           "title": "行程確認",
           "desc": "收到確認信了！正式定案！📧✨ #旅行計畫",
           "reason": "你的訂位代號 (PNR) 是你整趟旅程的關鍵鑰匙。千萬別分享出去！"
         },
-        "8": {
+        "10": {
           "title": "登機門前",
           "desc": "準備登機！我們目的地見！🛫",
           "reason": "您的訂位代號、機票號碼與 QR code 都很敏感。任何人都可以用它們來存取或修改您的行程！"
         },
-        "9": {
+        "11": {
           "title": "準備起飛",
           "desc": "護照準備好了！出發吧！🛂✈️",
           "reason": "台灣護照的 MRZ 區塊特別包含了你的身分證字號！即使不用機器，也很容易被解讀並盜用你的永久身分資訊。"

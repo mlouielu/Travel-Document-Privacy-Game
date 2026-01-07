@@ -84,6 +84,23 @@ export const scenarios = [
   },
   {
     id: 5,
+    title: "Mobile Check-in",
+    description: "Checking in on the go! Love how the app hides my details automatically. 📱🔒",
+    type: "app-screenshot",
+    risky: false,
+    details: {
+      airline: "SkyWays",
+      flight: "SW 101",
+      route: "JFK - LHR",
+      date: "12 DEC",
+      passenger: "ALEX JOHNSON",
+      pnr: "******"
+    },
+    leak: null,
+    safeMessage: "Excellent! The PNR is masked, so sharing this screenshot is safe."
+  },
+  {
+    id: 6,
     title: "New Passport Arrived!",
     description: "Got my new passport today! Ready for the next 10 years of travel! 🌍🛂",
     type: "passport",
@@ -98,12 +115,27 @@ export const scenarios = [
       passportNumber: "987654321"
     },
     leak: {
-      target: "mrz", // Machine Readable Zone
+      target: "mrz",
       reason: "The bottom two lines (MRZ) contain all the info on the page: Name, Passport Number, DOB, and Expiry. It's readable by bots and scammers instantly."
     }
   },
   {
-    id: 6,
+    id: 7,
+    title: "New Bag Tag",
+    description: "Ready to roll! Kept it simple this time. 🧳",
+    type: "luggage-tag",
+    risky: false,
+    details: {
+      name: "JANE SMITH",
+      phone: "See Agent",
+      address: "Hidden",
+      email: "jane.travels@email.com"
+    },
+    leak: null,
+    safeMessage: "Smart move! Using a tag that hides your address or only shows minimal contact info prevents home burglary risks."
+  },
+  {
+    id: 8,
     title: "Luggage Tag",
     description: "My bags are packed and ready to go! 🧳✈️ #TravelReady",
     type: "luggage-tag",
@@ -121,7 +153,7 @@ export const scenarios = [
     }
   },
   {
-    id: 7,
+    id: 9,
     title: "Trip Confirmation",
     description: "Got the email! It's official! 📧✨ #TravelPlans",
     type: "email",
@@ -141,7 +173,7 @@ export const scenarios = [
     }
   },
   {
-    id: 8,
+    id: 10,
     title: "At the Gate",
     description: "Waiting to board! See you on the other side! 🛫",
     type: "boarding-pass",
@@ -163,7 +195,7 @@ export const scenarios = [
     }
   },
   {
-    id: 9,
+    id: 11,
     title: "Ready to Fly",
     description: "Passports ready! Let's go! 🛂✈️",
     type: "passport",
