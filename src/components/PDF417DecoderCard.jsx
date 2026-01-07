@@ -4,7 +4,7 @@ import { useTranslation } from 'react-i18next';
 export const PDF417DecoderCard = ({ details, onCorrect }) => {
   const { t } = useTranslation();
   const { raw } = details;
-  
+
   const fields = [
     { id: 'passenger_name', label: t('decoder.passenger_name'), start: 2, end: 22, color: '#ef4444' },
     { id: 'pnr', label: t('decoder.pnr'), start: 23, end: 30, color: '#3b82f6' },
@@ -28,12 +28,12 @@ export const PDF417DecoderCard = ({ details, onCorrect }) => {
 
   const handleTargetClick = (fieldId) => {
     if (!selectedField) return;
-    
+
     if (selectedField.id === fieldId) {
       const newMatches = { ...matches, [fieldId]: true };
       setMatches(newMatches);
       setSelectedField(null);
-      
+
       if (Object.keys(newMatches).length === fields.length) {
         onCorrect && onCorrect();
       }
@@ -64,7 +64,7 @@ export const PDF417DecoderCard = ({ details, onCorrect }) => {
             key={i}
             onClick={() => seg.fieldId && handleTargetClick(seg.fieldId)}
             className={`transition-all duration-300 py-0.5 ${
-              seg.fieldId 
+              seg.fieldId
                 ? 'cursor-pointer px-0.5 rounded ' + (matches[seg.fieldId] ? 'ring-2 ring-offset-1 ring-offset-gray-900' : 'hover:bg-gray-800')
                 : ''
             }`}
@@ -89,9 +89,9 @@ export const PDF417DecoderCard = ({ details, onCorrect }) => {
 
       {/* Barcode Image Visual */}
       <div className="w-full flex justify-center py-2 bg-gray-50 rounded-lg border border-gray-100">
-        <img 
-          src="/barcode.jpg" 
-          alt="Boarding Pass Barcode" 
+        <img
+          src="barcode.jpg"
+          alt="Boarding Pass Barcode"
           className="h-16 object-contain mix-blend-multiply opacity-80"
         />
       </div>
@@ -117,7 +117,7 @@ export const PDF417DecoderCard = ({ details, onCorrect }) => {
                 ? 'bg-white shadow-md scale-105 z-10'
                 : 'bg-white border-gray-100 text-gray-500 hover:border-gray-200 shadow-sm'
             }`}
-            style={{ 
+            style={{
               borderColor: selectedField?.id === field.id ? field.color : undefined,
               color: selectedField?.id === field.id ? field.color : undefined,
             }}

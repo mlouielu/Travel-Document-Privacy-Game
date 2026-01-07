@@ -49,7 +49,7 @@ export const PassportOverBoardingPassCard = ({ details, showLeak, leakTarget, on
             />
 
             <image
-              href="/barcode.jpg"
+              href="barcode.jpg"
               x="0"
               y="0"
               width="135"
