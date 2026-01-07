@@ -100,6 +100,11 @@ const resources = {
           "title": "Ready to Fly",
           "desc": "Passports ready! Let's go! 🛂✈️",
           "reason": "Taiwan's MRZ specifically includes your National ID number! Even without a machine, it's easy to decode and steal your permanent identity info."
+        },
+        "14": {
+          "title": "Passport Cover",
+          "desc": "Using my passport to cover my boarding pass for extra privacy! Smart move, right? 🛂✈️",
+          "reason": "Even though the boarding pass is mostly covered, the barcode sticking out at the top can still be scanned! Barcodes contain your full PNR and personal details."
         }
       },
       "card": {
@@ -242,6 +247,11 @@ const resources = {
           "title": "準備起飛",
           "desc": "護照準備好了！出發吧！🛂✈️",
           "reason": "台灣護照的 MRZ 區塊特別包含了你的身分證字號！即使不用機器，也很容易被解讀並盜用你的永久身分資訊。"
+        },
+        "14": {
+          "title": "護照遮蔽",
+          "desc": "用護照遮住登機證來保護隱私！這樣很聰明吧？🛂✈️",
+          "reason": "雖然登機證大部分都被遮住了，但露出來的條碼仍然可以被掃描！條碼包含你的完整訂位代號 (PNR) 和個人資訊。"
         }
       },
       "card": {

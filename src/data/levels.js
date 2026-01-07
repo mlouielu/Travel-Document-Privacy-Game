@@ -247,5 +247,19 @@ export const scenarios = [
     leak: {
       target: "mrz"
     }
+  },
+  {
+    id: 14,
+    title: "Passport Cover",
+    type: "passport-over-boarding-pass",
+    gamemode: "find-leak",
+    risky: true,
+    details: {
+      flight: "5J 101",
+      gate: "C57"
+    },
+    leak: {
+      target: "barcode"
+    }
   }
 ];

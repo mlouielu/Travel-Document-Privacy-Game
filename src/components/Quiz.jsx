@@ -8,6 +8,7 @@ import { BoardingPassCard } from './BoardingPassCard';
 import { AppScreenshotCard } from './AppScreenshotCard';
 import { LuggageTagCard } from './LuggageTagCard';
 import { EmailConfirmationCard } from './EmailConfirmationCard';
+import { PassportOverBoardingPassCard } from './PassportOverBoardingPassCard';
 import { ShieldCheck, ShieldAlert, ChevronRight, RefreshCcw, Languages, Share2, AtSign, Download, Camera, Ticket, Book } from 'lucide-react';
 
 export const Quiz = () => {
@@ -156,6 +157,8 @@ export const Quiz = () => {
         return <LuggageTagCard {...commonProps} onInteract={handleObjectClick} />;
     } else if (currentScenario.type === 'email') {
         return <EmailConfirmationCard {...commonProps} onInteract={handleObjectClick} />;
+    } else if (currentScenario.type === 'passport-over-boarding-pass') {
+        return <PassportOverBoardingPassCard {...commonProps} onInteract={handleObjectClick} />;
     }
     return <BoardingPassCard {...commonProps} onInteract={handleObjectClick} />;
   };
