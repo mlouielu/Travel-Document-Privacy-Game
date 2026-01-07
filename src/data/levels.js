@@ -47,13 +47,13 @@ export const scenarios = [
     type: "boarding-pass",
     risky: false,
     details: {
-      passengerName: "HIDDEN",
+      passengerName: "********",
       flight: "DL 112",
       origin: "LHR",
       destination: "JFK",
       date: "22 DEC",
       seat: "12C",
-      pnr: "HIDDEN",
+      pnr: "************",
     },
     leak: null
   },
