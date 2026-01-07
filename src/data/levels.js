@@ -158,8 +158,8 @@ export const scenarios = [
       ticketNumber: "123 4567 8901",
     },
     leak: {
-      target: "qr-code",
-      reason: "Barcodes and QR codes are easily readable. They contain your name and PNR."
+      target: ["qr-code", "pnr", "etkt"],
+      reason: "Your PNR, Ticket Number, and QR code are all sensitive. Anyone can use them to access or modify your booking!"
     }
   },
   {

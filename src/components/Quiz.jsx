@@ -91,7 +91,11 @@ export const Quiz = () => {
     if (hasVoted) return;
 
     // In 'find-leak' mode, clicking the right target is "Correct"
-    if (target === currentScenario.leak.target) {
+    const isTargetCorrect = Array.isArray(currentScenario.leak.target)
+        ? currentScenario.leak.target.includes(target)
+        : target === currentScenario.leak.target;
+
+    if (isTargetCorrect) {
         setIsCorrect(true);
         setScore(s => s + 1);
         setHasVoted(true);

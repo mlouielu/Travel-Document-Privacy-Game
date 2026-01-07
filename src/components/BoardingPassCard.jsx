@@ -4,7 +4,15 @@ import { Plane } from 'lucide-react';
 export const BoardingPassCard = ({ details, showLeak, isSafe, leakTarget, onInteract }) => {
   const { passengerName, flight, origin, destination, date, seat, pnr, ticketNumber } = details;
 
-  const isLeakVisible = (target) => showLeak && (leakTarget === target || leakTarget === 'qr-code');
+  const isLeakVisible = (target) => {
+      if (!showLeak) return false;
+      if (Array.isArray(leakTarget)) {
+          return leakTarget.includes(target);
+      }
+      // Legacy support or single string target:
+      // If target matches, or if we are checking PNR and the leak is 'qr-code' (implied association)
+      return leakTarget === target || (target === 'pnr' && leakTarget === 'qr-code');
+  };
 
   return (
     <div className="relative w-[340px] bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden transform scale-[0.8] xs:scale-90 sm:scale-100 origin-center">
@@ -52,15 +60,25 @@ export const BoardingPassCard = ({ details, showLeak, isSafe, leakTarget, onInte
         {/* Barcode / PNR Section */}
         <div className="border-t border-dashed border-gray-300 pt-4 relative">
              <div className="flex justify-between items-end">
-                <div 
-                    onClick={() => onInteract && onInteract('pnr')}
-                    className={`text-xs text-gray-400 transition-all duration-300 
-                    ${onInteract ? 'cursor-pointer hover:bg-red-50 ring-1 ring-transparent hover:ring-red-200 p-1 -ml-1 -mb-1 rounded' : ''}
-                    ${isLeakVisible('pnr') ? 'bg-red-500/10 ring-2 ring-red-500 rounded p-1 -ml-1 -mb-1 animate-pulse' : ''}
-                    `}
-                >
-                    <div>PNR: <span className="font-bold">{pnr}</span></div>
-                    <div>ETKT: <span className="font-bold">{ticketNumber}</span></div>
+                <div className="flex flex-col gap-0.5">
+                    <div 
+                        onClick={() => onInteract && onInteract('pnr')}
+                        className={`text-xs text-gray-400 transition-all duration-300 px-1 rounded -ml-1
+                        ${onInteract ? 'cursor-pointer hover:bg-red-50 hover:text-gray-600 ring-1 ring-transparent hover:ring-red-200' : ''}
+                        ${isLeakVisible('pnr') ? 'bg-red-500/10 ring-2 ring-red-500 animate-pulse text-gray-800' : ''}
+                        `}
+                    >
+                        PNR: <span className="font-bold">{pnr}</span>
+                    </div>
+                    <div 
+                        onClick={() => onInteract && onInteract('etkt')}
+                        className={`text-xs text-gray-400 transition-all duration-300 px-1 rounded -ml-1
+                        ${onInteract ? 'cursor-pointer hover:bg-red-50 hover:text-gray-600 ring-1 ring-transparent hover:ring-red-200' : ''}
+                        ${isLeakVisible('etkt') ? 'bg-red-500/10 ring-2 ring-red-500 animate-pulse text-gray-800' : ''}
+                        `}
+                    >
+                        ETKT: <span className="font-bold">{ticketNumber}</span>
+                    </div>
                 </div>
                 
                 {/* Fake QR Code */}
@@ -80,9 +98,9 @@ export const BoardingPassCard = ({ details, showLeak, isSafe, leakTarget, onInte
              </div>
 
             {showLeak && (
-                <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+                <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
                      <span className="bg-red-600 text-white text-xs px-2 py-1 rounded font-bold shadow-lg animate-bounce">
-                        PNR & ETKT LEAK!
+                        SENSITIVE DATA!
                      </span>
                 </div>
             )}

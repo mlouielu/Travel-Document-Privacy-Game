@@ -72,7 +72,7 @@ const resources = {
         "8": {
           "title": "At the Gate",
           "desc": "Waiting to board! See you on the other side! 🛫",
-          "reason": "Barcodes and QR codes are easily readable. They contain your name and PNR."
+          "reason": "Your PNR, Ticket Number, and QR code are all sensitive. Anyone can use them to access or modify your booking!"
         },
         "9": {
           "title": "Ready to Fly",
@@ -166,7 +166,7 @@ const resources = {
         "8": {
           "title": "登機門前",
           "desc": "準備登機！我們目的地見！🛫",
-          "reason": "條碼與 QR code 非常容易被讀取。它們包含了你的姓名與 PNR。"
+          "reason": "您的訂位代號、機票號碼與 QR code 都很敏感。任何人都可以用它們來存取或修改您的行程！"
         },
         "9": {
           "title": "準備起飛",
