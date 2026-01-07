@@ -144,7 +144,7 @@ export const Quiz = () => {
     };
 
     if (currentScenario.type === 'passport') {
-        return <PassportCard {...commonProps} country={currentScenario.country} />;
+        return <PassportCard {...commonProps} country={currentScenario.country} maskMRZ={currentScenario.maskMRZ} />;
     } else if (currentScenario.type === 'app-screenshot') {
         return <AppScreenshotCard {...commonProps} />;
     } else if (currentScenario.type === 'luggage-tag') {
@@ -205,6 +205,7 @@ export const Quiz = () => {
                           <li className="flex gap-2 items-start"><div className="w-1.5 h-1.5 rounded-full bg-indigo-400 mt-1.5 shrink-0" />{t('takeaway_1')}</li>
                           <li className="flex gap-2 items-start"><div className="w-1.5 h-1.5 rounded-full bg-indigo-400 mt-1.5 shrink-0" />{t('takeaway_2')}</li>
                           <li className="flex gap-2 items-start"><div className="w-1.5 h-1.5 rounded-full bg-indigo-400 mt-1.5 shrink-0" />{t('takeaway_3')}</li>
+                          <li className="flex gap-2 items-start"><div className="w-1.5 h-1.5 rounded-full bg-indigo-400 mt-1.5 shrink-0" />{t('takeaway_4')}</li>
                       </ul>
                   </div>
 

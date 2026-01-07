@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
-export const PassportCard = ({ details, showLeak, country = 'USA', leakTarget = 'mrz', onInteract, partialCover = false }) => {
+export const PassportCard = ({ details, showLeak, country = 'USA', leakTarget = 'mrz', onInteract, partialCover = false, isSafe = false, maskMRZ = false }) => {
 
   const { t, i18n } = useTranslation();
 
@@ -77,16 +77,22 @@ export const PassportCard = ({ details, showLeak, country = 'USA', leakTarget = 
                     <div className="absolute top-12 left-4 w-24 h-28 bg-gray-900/95 z-30 rounded-sm flex items-center justify-center border-2 border-dashed border-white/20 rotate-1 shadow-xl">
                         <span className="text-[10px] text-white/40 font-bold uppercase rotate-12">HIDDEN</span>
                     </div>
-				  {/* Cover Passport No */}
-                    <div className="absolute top-13 left-42 w-20 h-5 bg-gray-900/95 z-30 rounded flex items-center justify-center -rotate-4 shadow-lg">
+                    {/* Cover Passport No */}
+                    <div className="absolute top-13 left-45 w-20 h-5 bg-gray-900/95 z-30 rounded flex items-center justify-center -rotate-1 shadow-lg">
                         <span className="text-[8px] text-white/40 font-bold uppercase">REDACTED</span>
                     </div>
-
                     {/* Cover Name */}
                     <div className="absolute top-20 left-32 w-40 h-8 bg-gray-900/95 z-30 rounded flex items-center justify-center -rotate-1 shadow-lg">
                         <span className="text-[8px] text-white/40 font-bold uppercase">REDACTED</span>
                     </div>
                 </>
+            )}
+
+            {/* Cover MRZ */}
+            {maskMRZ && (
+                <div className="absolute bottom-2 left-2 right-2 h-10 bg-gray-900/98 z-30 rounded flex items-center justify-center border border-white/10 shadow-lg">
+                    <span className="text-[8px] text-white/30 font-bold tracking-[0.5em]">REDACTED DATA</span>
+                </div>
             )}
 
             {showLeak && (
@@ -169,7 +175,9 @@ export const PassportCard = ({ details, showLeak, country = 'USA', leakTarget = 
                              onClick={() => onInteract && onInteract('personal-id')}
                              className={`flex-1 transition-colors duration-300 rounded px-0.5 -mx-0.5
                              ${onInteract ? 'cursor-pointer hover:bg-red-50 ring-1 ring-transparent hover:ring-red-200' : ''}
-                             ${isLeakVisible('personal-id') ? 'bg-red-500/20 ring-1 ring-red-500' : ''}`}>
+                             ${isLeakVisible('personal-id') ? 'bg-red-500/20 ring-1 ring-red-500' : ''}
+                             ${isSafe ? 'opacity-20 blur-sm' : ''}
+                             `}>
                             <span className="block text-blue-700 text-[5px] uppercase">{t('passport.personal_id')}</span>
                             <span className="font-mono text-[8px]">{personalIdNumber}</span>
                         </div>
@@ -227,6 +235,7 @@ export const PassportCard = ({ details, showLeak, country = 'USA', leakTarget = 
                         className={`mt-auto font-mono text-[9px] text-black leading-none tracking-widest p-0.5 -mx-0.5 rounded transition-all duration-300 overflow-hidden whitespace-nowrap
                             ${onInteract ? 'cursor-pointer hover:bg-red-50 ring-1 ring-transparent hover:ring-red-200' : ''}
                             ${isLeakVisible('mrz') || isLeakVisible('personal-id') ? 'bg-red-500/20 ring-1 ring-red-500 animate-pulse' : ''}
+                            ${isSafe ? 'opacity-20 blur-sm' : ''}
                         `}
                         >
                         <p>{mrzLine1}</p>
@@ -249,6 +258,13 @@ export const PassportCard = ({ details, showLeak, country = 'USA', leakTarget = 
                 <span className="text-[10px] text-white/20 font-bold">PRIVATE</span>
             </div>
         </>
+      )}
+
+      {/* Cover MRZ */}
+      {maskMRZ && (
+        <div className="absolute bottom-4 left-4 right-4 h-12 bg-gray-900/98 z-30 rounded flex items-center justify-center border border-white/10 shadow-lg">
+            <span className="text-[10px] text-white/30 font-bold tracking-[0.5em]">HIDDEN</span>
+        </div>
       )}
 
       {showLeak && (
@@ -327,6 +343,7 @@ export const PassportCard = ({ details, showLeak, country = 'USA', leakTarget = 
               className={`mt-auto font-mono text-[11px] leading-tight tracking-widest p-1 rounded transition-all duration-300
                 ${onInteract ? 'cursor-pointer hover:bg-red-50 ring-1 ring-transparent hover:ring-red-200' : ''}
                 ${isLeakVisible('mrz') ? 'bg-red-500/20 ring-4 ring-red-500 animate-pulse' : ''}
+                ${isSafe ? 'opacity-20 blur-sm' : ''}
               `}
             >
               <p>{mrzLine1}</p>

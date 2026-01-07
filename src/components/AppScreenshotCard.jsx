@@ -1,7 +1,9 @@
 import React from 'react';
 import { Wifi, Battery, Signal, ChevronLeft, CheckCircle } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
-export const AppScreenshotCard = ({ details, showLeak, onInteract }) => {
+export const AppScreenshotCard = ({ details, showLeak, onInteract, isSafe }) => {
+  const { t } = useTranslation();
   const { airline, flight, route, date, passenger, pnr } = details;
 
   return (
@@ -24,7 +26,7 @@ export const AppScreenshotCard = ({ details, showLeak, onInteract }) => {
         </div>
         <div className="flex flex-col items-center">
              <CheckCircle className="w-10 h-10 mb-2 opacity-90" />
-             <h2 className="text-xl font-bold">Booking Confirmed!</h2>
+             <h2 className="text-xl font-bold">{t('card.booking_confirmed')}</h2>
         </div>
       </div>
 
@@ -50,7 +52,7 @@ export const AppScreenshotCard = ({ details, showLeak, onInteract }) => {
                 className={`border-b border-gray-100 pb-2 transition-colors rounded px-1 -mx-1
                     ${!showLeak && onInteract ? 'cursor-pointer hover:bg-blue-50/50' : ''}`}
              >
-                <div className="text-xs text-gray-400 uppercase">Passenger</div>
+                <div className="text-xs text-gray-400 uppercase">{t('card.passenger')}</div>
                 <div className="font-medium">{passenger}</div>
              </div>
              
@@ -61,13 +63,13 @@ export const AppScreenshotCard = ({ details, showLeak, onInteract }) => {
                     ${showLeak ? 'bg-red-500/10 p-1 rounded ring-2 ring-red-500' : ''}
                 `}
              >
-                <div className="text-xs text-gray-400 uppercase">Booking Reference (PNR)</div>
-                <div className="font-mono font-bold text-sm tracking-widest">{pnr}</div>
+                <div className="text-xs text-gray-400 uppercase">{t('card.pnr_full_label')}</div>
+                <div className={`font-mono font-bold text-sm tracking-widest ${isSafe ? 'blur-sm' : ''}`}>{pnr}</div>
                 
                 {showLeak && (
                     <div className="absolute right-0 top-0 bottom-0 flex items-center pr-2">
                         <span className="bg-red-600 text-white text-[10px] px-2 py-1 rounded font-bold shadow animate-bounce">
-                            SECRET!
+                            {t('card.secret_alert')}
                         </span>
                     </div>
                 )}
@@ -77,7 +79,7 @@ export const AppScreenshotCard = ({ details, showLeak, onInteract }) => {
         {/* Footer */}
         <div className="mt-8 text-center">
              <button className="bg-blue-600 text-white w-full py-2 rounded-lg font-bold text-sm">
-                Manage Booking
+                {t('card.manage_booking')}
              </button>
         </div>
       </div>

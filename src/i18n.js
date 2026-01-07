@@ -33,6 +33,7 @@ const resources = {
       "takeaway_1": "Barcodes & QR codes contain your full name and PNR.",
       "takeaway_2": "Passport MRZ lines are machine-readable and contain full PII.",
       "takeaway_3": "Always cover sensitive data physically or digitally before sharing.",
+      "takeaway_4": "Sharing trip details beforehand can lead to doxxing. Share later or mask the dates!",
       "scenarios": {
         "1": {
           "title": "Airport Check-in",
@@ -65,30 +66,61 @@ const resources = {
           "reason": "The bottom two lines (MRZ) contain all the info on the page: Name, Passport Number, DOB, and Expiry. It's readable by bots and scammers instantly."
         },
         "7": {
-          "title": "New Bag Tag",
-          "desc": "Ready to roll! Kept it simple this time. 🧳",
-          "safe_msg": "Smart move! Using a tag that hides your address or only shows minimal contact info prevents home burglary risks."
+          "title": "Privacy First",
+          "desc": "Found a better way to share my travel wins! 🛡️✈️",
+          "reason": "Even if you cover the MRZ and your name, your passport number is still visible at the top! This is unique PII that can be used for identity theft."
         },
         "8": {
+          "title": "Ready to Roll",
+          "desc": "Tags on, bags packed! 🧳✨",
+          "safe_msg": "Perfect! Keeping your address private prevents home security risks."
+        },
+        "9": {
           "title": "Luggage Tag",
           "desc": "My bags are packed and ready to go! 🧳✈️ #TravelReady",
           "reason": "Never post your home address on a public luggage tag photo! It tells everyone where you live and that your house is currently empty."
         },
-        "9": {
+        "10": {
           "title": "Trip Confirmation",
           "desc": "Got the email! It's official! 📧✨ #TravelPlans",
           "reason": "Your Booking Reference (PNR) is the key to your entire trip. Don't share it!"
         },
-        "10": {
+        "11": {
           "title": "At the Gate",
           "desc": "Waiting to board! See you on the other side! 🛫",
           "reason": "Your PNR, Ticket Number, and QR code are all sensitive. Anyone can use them to access or modify your booking!"
         },
-        "11": {
+        "12": {
           "title": "Ready to Fly",
           "desc": "Passports ready! Let's go! 🛂✈️",
           "reason": "Taiwan's MRZ specifically includes your National ID number! Even without a machine, it's easy to decode and steal your permanent identity info."
         }
+      },
+      "card": {
+        "airline_label": "QUIZ AIRLINE",
+        "economy": "ECONOMY",
+        "departure": "Departure",
+        "arrival": "Arrival",
+        "flight": "Flight",
+        "date": "Date",
+        "seat": "Seat",
+        "passenger": "Passenger",
+        "pnr_label": "PNR",
+        "etkt_label": "ETKT",
+        "sensitive_data_leak": "SENSITIVE DATA!",
+        "booking_confirmed": "Booking Confirmed!",
+        "booking_confirmed_header": "Booking Confirmed",
+        "pnr_full_label": "Booking Reference (PNR)",
+        "manage_booking": "Manage Booking",
+        "secret_alert": "SECRET!",
+        "to_label": "To:",
+        "trip_confirmed_msg": "Your trip is confirmed!",
+        "booking_reference": "Booking Reference",
+        "total_paid": "Total Paid",
+        "pnr_exposed_alert": "PNR EXPOSED!",
+        "priority_baggage": "Priority Baggage",
+        "personal_info_leak": "PERSONAL INFO!",
+        "home_address_leak": "HOME ADDRESS!"
       },
       "passport": {
         "type": "Type",
@@ -137,6 +169,7 @@ const resources = {
       "takeaway_1": "條碼與 QR code 包含你的全名與訂位代號 (PNR)。",
       "takeaway_2": "護照底部的 MRZ 區塊可被機器讀取並包含所有個人資料。",
       "takeaway_3": "分享照片前，請務必遮蓋敏感資訊。",
+      "takeaway_4": "提前分享行程可能導致被肉搜 (doxxing)。請在行程結束後分享，或遮蔽日期！",
       "scenarios": {
         "1": {
           "title": "機場報到",
@@ -169,30 +202,61 @@ const resources = {
           "reason": "底部的 MRZ 區塊以簡單格式包含了你的所有資訊。即使不用機器，任何人只要看一眼文字就能解讀出你的姓名、護照號碼與生日！"
         },
         "7": {
-          "title": "新行李吊牌",
-          "desc": "準備出發！這次保持簡單。🧳",
-          "safe_msg": "聰明的選擇！使用隱藏地址或僅顯示最少聯絡資訊的吊牌，可避免家中遭竊的風險。"
+          "title": "隱私優先",
+          "desc": "發現一個更棒的分享方式！🛡️✈️",
+          "reason": "即使你遮住了 MRZ 和姓名，護照號碼（Passport No.）仍然清晰可見！這是獨特的個人辨識資訊，也可能導致身分盜用。"
         },
         "8": {
+          "title": "準備出發",
+          "desc": "吊牌掛好了，行李打包完成！🧳✨",
+          "safe_msg": "完美！隱藏地址可避免住家安全風險。"
+        },
+        "9": {
           "title": "行李吊牌",
           "desc": "行李打包好了，準備出發！🧳✈️ #旅行",
           "reason": "千萬不要公開行李吊牌上的住家地址！這會告訴所有人你住在哪裡，而且你現在不在家。"
         },
-        "9": {
+        "10": {
           "title": "行程確認",
           "desc": "收到確認信了！正式定案！📧✨ #旅行計畫",
           "reason": "你的訂位代號 (PNR) 是你整趟旅程的關鍵鑰匙。千萬別分享出去！"
         },
-        "10": {
+        "11": {
           "title": "登機門前",
           "desc": "準備登機！我們目的地見！🛫",
           "reason": "您的訂位代號、機票號碼與 QR code 都很敏感。任何人都可以用它們來存取或修改您的行程！"
         },
-        "11": {
+        "12": {
           "title": "準備起飛",
           "desc": "護照準備好了！出發吧！🛂✈️",
           "reason": "台灣護照的 MRZ 區塊特別包含了你的身分證字號！即使不用機器，也很容易被解讀並盜用你的永久身分資訊。"
         }
+      },
+      "card": {
+        "airline_label": "魁茲航空",
+        "economy": "經濟艙",
+        "departure": "出發地",
+        "arrival": "目的地",
+        "flight": "航班",
+        "date": "日期",
+        "seat": "座位",
+        "passenger": "乘客",
+        "pnr_label": "訂位代號",
+        "etkt_label": "電子機票",
+        "sensitive_data_leak": "敏感資料外洩！",
+        "booking_confirmed": "訂位已確認！",
+        "booking_confirmed_header": "訂位確認",
+        "pnr_full_label": "訂位代號 (PNR)",
+        "manage_booking": "管理行程",
+        "secret_alert": "機密！",
+        "to_label": "收件人：",
+        "trip_confirmed_msg": "您的行程已確認！",
+        "booking_reference": "訂位代號",
+        "total_paid": "付款總額",
+        "pnr_exposed_alert": "PNR 外洩！",
+        "priority_baggage": "優先行李",
+        "personal_info_leak": "個資外洩！",
+        "home_address_leak": "住家地址外洩！"
       },
       "passport": {
         "type": "類別",

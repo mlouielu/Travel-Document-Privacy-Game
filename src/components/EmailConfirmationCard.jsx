@@ -1,7 +1,9 @@
 import React from 'react';
 import { Mail, Calendar, MapPin } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
-export const EmailConfirmationCard = ({ details, onInteract, showLeak, leakTarget }) => {
+export const EmailConfirmationCard = ({ details, onInteract, showLeak, leakTarget, isSafe }) => {
+  const { t } = useTranslation();
   const { airline, pnr, passenger, date, flight, price } = details;
 
   const handleAreaClick = (area) => {
@@ -23,21 +25,22 @@ export const EmailConfirmationCard = ({ details, onInteract, showLeak, leakTarge
             <Mail className="w-4 h-4" />
         </div>
         <div>
-            <div className="text-xs font-bold text-gray-800">{airline} Booking Confirmed</div>
-            <div className="text-[10px] text-gray-500">To: {passenger}</div>
+            <div className="text-xs font-bold text-gray-800">{airline} {t('card.booking_confirmed_header')}</div>
+            <div className="text-[10px] text-gray-500">{t('card.to_label')} {passenger}</div>
         </div>
       </div>
 
       {/* Email Body */}
       <div className="p-5">
-        <h3 className="text-lg font-bold text-gray-800 mb-4">Your trip is confirmed!</h3>
+        <h3 className="text-lg font-bold text-gray-800 mb-4">{t('card.trip_confirmed_msg')}</h3>
         
         <div className="mb-4">
-            <div className="text-xs text-gray-500 uppercase tracking-wide mb-1">Booking Reference</div>
+            <div className="text-xs text-gray-500 uppercase tracking-wide mb-1">{t('card.booking_reference')}</div>
             <div 
                 onClick={() => handleAreaClick('pnr')}
                 className={`text-2xl font-mono font-bold text-blue-600 inline-block px-1 rounded cursor-pointer transition-colors hover:bg-blue-50
                     ${isLeakVisible('pnr') ? 'ring-2 ring-red-500 bg-red-100 animate-pulse' : ''}
+                    ${isSafe ? 'blur-sm' : ''}
                 `}
             >
                 {pnr}
@@ -70,19 +73,19 @@ export const EmailConfirmationCard = ({ details, onInteract, showLeak, leakTarge
             onClick={() => handleAreaClick('price')}
             className={`mt-4 flex justify-between items-center rounded p-1 -m-1 transition-colors ${onInteract ? 'cursor-pointer hover:bg-gray-50' : ''}`}
         >
-             <div className="text-xs text-gray-500">Total Paid</div>
+             <div className="text-xs text-gray-500">{t('card.total_paid')}</div>
              <div className="font-bold text-gray-800">{price}</div>
         </div>
 
         <button className="w-full mt-4 bg-blue-600 text-white py-2 rounded text-xs font-bold">
-            Manage Booking
+            {t('card.manage_booking')}
         </button>
       </div>
 
        {showLeak && (
         <div className="absolute top-1/2 left-0 right-0 text-center pointer-events-none z-20">
              <span className="inline-block bg-red-600 text-white text-xs px-2 py-1 rounded font-bold shadow-lg animate-bounce">
-                PNR EXPOSED!
+                {t('card.pnr_exposed_alert')}
              </span>
         </div>
       )}

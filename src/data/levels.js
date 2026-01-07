@@ -2,12 +2,11 @@ export const scenarios = [
   {
     id: 1,
     title: "Airport Check-in",
-    description: "So excited for this trip! Finally managed to get a window seat! ✈️ #AdventureTime",
     type: "boarding-pass",
     risky: true,
     details: {
       passengerName: "SMITH/JANE",
-      flight: "UA 524",
+      flight: "QZ 524",
       origin: "SFO",
       destination: "NRT",
       date: "14 OCT",
@@ -16,14 +15,12 @@ export const scenarios = [
       ticketNumber: "016 2415 9921",
     },
     leak: {
-      target: "qr-code", // Used by the renderer to highlight
-      reason: "This QR code contains your PNR (Booking Reference) and full name. Anyone can scan it to access your booking, change your seat, or even cancel your flight!"
+      target: "qr-code"
     }
   },
   {
     id: 2,
     title: "Taiwan Adventure",
-    description: "Finally off to Taiwan! Can't wait for the night markets! 🇹🇼🍜 #Taiwan #Travel",
     type: "passport",
     country: "TWN",
     risky: true,
@@ -41,68 +38,60 @@ export const scenarios = [
       passportNumber: "9998881111"
     },
     leak: {
-      target: "personal-id",
-      reason: "The National ID number is unique and permanent. Leaking it exposes you to identity theft risks in Taiwan, unlike a passport number which changes with renewal."
+      target: "personal-id"
     }
   },
   {
     id: 3,
     title: "Safe Travels",
-    description: "Heading home for the holidays. Covered the important bits just in case! 🏠❤️",
     type: "boarding-pass",
     risky: false,
     details: {
       passengerName: "HIDDEN",
-      flight: "DL 112",
+      flight: "QZ 112",
       origin: "LHR",
       destination: "JFK",
       date: "22 DEC",
       seat: "12C",
       pnr: "HIDDEN",
     },
-    leak: null,
-    safeMessage: "Great job! By covering the barcode and ticket number, you've protected your personal data."
+    leak: null
   },
   {
     id: 4,
     title: "Trip Booked!",
-    description: "Just booked my flights! So easy with the app! 📱✈️",
     type: "app-screenshot",
     risky: true,
     details: {
       airline: "SkyWays",
-      flight: "SW 999",
+      flight: "QZ 999",
       route: "LAX - SYD",
       date: "10 NOV",
       passenger: "ALEX JOHNSON",
       pnr: "X7Z9P2"
     },
     leak: {
-      target: "pnr",
-      reason: "Screenshots of booking apps often show the PNR clearly. This is the 'password' to your booking management!"
+      target: "pnr"
     }
   },
   {
     id: 5,
     title: "Mobile Check-in",
-    description: "Checking in on the go! Love how the app hides my details automatically. 📱🔒",
     type: "app-screenshot",
     risky: false,
     details: {
       airline: "SkyWays",
-      flight: "SW 101",
+      flight: "QZ 101",
       route: "JFK - LHR",
       date: "12 DEC",
       passenger: "ALEX JOHNSON",
       pnr: "******"
     },
-    leak: null,
-    safeMessage: "Excellent! The PNR is masked, so sharing this screenshot is safe."
+    leak: null
   },
   {
     id: 6,
     title: "New Passport Arrived!",
-    description: "Got my new passport today! Ready for the next 10 years of travel! 🌍🛂",
     type: "passport",
     risky: true,
     details: {
@@ -115,29 +104,45 @@ export const scenarios = [
       passportNumber: "987654321"
     },
     leak: {
-      target: "mrz",
-      reason: "The bottom two lines (MRZ) contain all the info on the page: Name, Passport Number, DOB, and Expiry. It's readable by bots and scammers instantly."
+      target: "mrz"
     }
   },
   {
     id: 7,
-    title: "New Bag Tag",
-    description: "Ready to roll! Kept it simple this time. 🧳",
-    type: "luggage-tag",
-    risky: false,
+    title: "Privacy First",
+    type: "passport",
+    risky: true,
+    partialCover: true,
+    maskMRZ: true,
     details: {
-      name: "JANE SMITH",
-      phone: "See Agent",
-      address: "Hidden",
-      email: "jane.travels@email.com"
+      surname: "DOE",
+      givenNames: "JOHN",
+      nationality: "USA",
+      dob: "12 JAN 1990",
+      sex: "M",
+      expiration: "12 JAN 2036",
+      passportNumber: "987654321"
     },
-    leak: null,
-    safeMessage: "Smart move! Using a tag that hides your address or only shows minimal contact info prevents home burglary risks."
+    leak: {
+      target: "passport_no"
+    }
   },
   {
     id: 8,
+    title: "Ready to Roll",
+    type: "luggage-tag",
+    risky: false,
+    details: {
+      name: "J. SMITH",
+      phone: "Hidden",
+      address: "Hidden",
+      email: "j.smith@email.com"
+    },
+    leak: null
+  },
+  {
+    id: 9,
     title: "Luggage Tag",
-    description: "My bags are packed and ready to go! 🧳✈️ #TravelReady",
     type: "luggage-tag",
     gamemode: "find-leak",
     risky: true,
@@ -148,14 +153,12 @@ export const scenarios = [
       email: "jane.travels@email.com"
     },
     leak: {
-      target: "address",
-      reason: "Never post your home address on a public luggage tag photo! It tells everyone where you live and that your house is currently empty."
+      target: "address"
     }
   },
   {
-    id: 9,
+    id: 10,
     title: "Trip Confirmation",
-    description: "Got the email! It's official! 📧✨ #TravelPlans",
     type: "email",
     gamemode: "find-leak",
     risky: true,
@@ -164,24 +167,22 @@ export const scenarios = [
       pnr: "OC815X",
       passenger: "JACK SHEPHARD",
       date: "22 SEP",
-      flight: "OC 815",
+      flight: "QZ 815",
       price: "$850.00"
     },
     leak: {
-      target: "pnr",
-      reason: "Your Booking Reference (PNR) is the key to your entire trip. Don't share it!"
+      target: "pnr"
     }
   },
   {
-    id: 10,
+    id: 11,
     title: "At the Gate",
-    description: "Waiting to board! See you on the other side! 🛫",
     type: "boarding-pass",
     gamemode: "find-leak",
     risky: true,
     details: {
       passengerName: "FORD/JAMES",
-      flight: "SA 202",
+      flight: "QZ 202",
       origin: "LAX",
       destination: "SYD",
       date: "15 DEC",
@@ -190,14 +191,12 @@ export const scenarios = [
       ticketNumber: "123 4567 8901",
     },
     leak: {
-      target: ["qr-code", "pnr", "etkt"],
-      reason: "Your PNR, Ticket Number, and QR code are all sensitive. Anyone can use them to access or modify your booking!"
+      target: ["qr-code", "pnr", "etkt"]
     }
   },
   {
-    id: 11,
+    id: 12,
     title: "Ready to Fly",
-    description: "Passports ready! Let's go! 🛂✈️",
     type: "passport",
     country: "TWN",
     gamemode: "find-leak",
@@ -217,8 +216,7 @@ export const scenarios = [
       passportNumber: "777666555"
     },
     leak: {
-      target: "mrz",
-      reason: "The MRZ code at the bottom of your passport is meant for machines, but scammers have machines too!"
+      target: "mrz"
     }
   }
 ];

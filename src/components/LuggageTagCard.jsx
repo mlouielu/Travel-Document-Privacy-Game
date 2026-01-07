@@ -1,7 +1,9 @@
 import React from 'react';
 import { MapPin, Phone, User } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
-export const LuggageTagCard = ({ details, onInteract, showLeak, leakTarget }) => {
+export const LuggageTagCard = ({ details, onInteract, showLeak, leakTarget, isSafe }) => {
+  const { t } = useTranslation();
   const { name, phone, address, email } = details;
 
   const handleAreaClick = (area) => {
@@ -19,7 +21,7 @@ export const LuggageTagCard = ({ details, onInteract, showLeak, leakTarget }) =>
       
       {/* Header */}
       <div className="bg-gray-800 p-2 text-center">
-        <h3 className="text-white font-bold uppercase tracking-widest text-xs">Priority Baggage</h3>
+        <h3 className="text-white font-bold uppercase tracking-widest text-xs">{t('card.priority_baggage')}</h3>
       </div>
 
       <div className="flex-1 p-4 bg-yellow-400 text-gray-900 font-sans relative">
@@ -39,7 +41,7 @@ export const LuggageTagCard = ({ details, onInteract, showLeak, leakTarget }) =>
             {/* Phone - Risky */}
             <div 
                 onClick={() => handleAreaClick('phone')}
-                className={`flex items-center gap-2 border-b border-gray-700/20 pb-1 cursor-pointer hover:bg-yellow-300/50 rounded px-1 transition-colors ${isLeakVisible('phone') ? 'ring-2 ring-red-500 bg-red-100/50 animate-pulse' : ''}`}
+                className={`flex items-center gap-2 border-b border-gray-700/20 pb-1 cursor-pointer hover:bg-yellow-300/50 rounded px-1 transition-colors ${isLeakVisible('phone') ? 'ring-2 ring-red-500 bg-red-100/50 animate-pulse' : ''} ${isSafe ? 'opacity-20 blur-sm' : ''}`}
             >
                 <Phone className="w-4 h-4 text-gray-700" />
                 <span className="font-mono">{phone}</span>
@@ -48,7 +50,7 @@ export const LuggageTagCard = ({ details, onInteract, showLeak, leakTarget }) =>
             {/* Address - Highly Risky */}
             <div 
                 onClick={() => handleAreaClick('address')}
-                className={`flex items-start gap-2 cursor-pointer hover:bg-yellow-300/50 rounded px-1 transition-colors ${isLeakVisible('address') ? 'ring-2 ring-red-500 bg-red-100/50 animate-pulse' : ''}`}
+                className={`flex items-start gap-2 cursor-pointer hover:bg-yellow-300/50 rounded px-1 transition-colors ${isLeakVisible('address') ? 'ring-2 ring-red-500 bg-red-100/50 animate-pulse' : ''} ${isSafe ? 'opacity-20 blur-sm' : ''}`}
             >
                 <MapPin className="w-4 h-4 text-gray-700 mt-1" />
                 <span className="font-mono text-xs leading-tight">{address}</span>
@@ -59,7 +61,7 @@ export const LuggageTagCard = ({ details, onInteract, showLeak, leakTarget }) =>
       {showLeak && (
         <div className="absolute bottom-2 right-2 z-20">
              <span className="inline-block bg-red-600 text-white text-[10px] px-2 py-0.5 rounded font-bold shadow-lg animate-bounce">
-                {leakTarget === 'address' ? 'HOME ADDRESS!' : 'PERSONAL INFO!'}
+                {leakTarget === 'address' ? t('card.home_address_leak') : t('card.personal_info_leak')}
              </span>
         </div>
       )}

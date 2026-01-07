@@ -1,7 +1,9 @@
 import React from 'react';
 import { Plane } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 export const BoardingPassCard = ({ details, showLeak, isSafe, leakTarget, onInteract }) => {
+  const { t } = useTranslation();
   const { passengerName, flight, origin, destination, date, seat, pnr, ticketNumber } = details;
 
   const isLeakVisible = (target) => {
@@ -21,8 +23,8 @@ export const BoardingPassCard = ({ details, showLeak, isSafe, leakTarget, onInte
       
       <div className="p-5">
         <div className="flex justify-between items-start mb-4">
-            <div className="text-indigo-900 font-bold text-lg">AIRLINE</div>
-            <div className="text-xs text-gray-500 font-mono">ECONOMY</div>
+            <div className="text-indigo-900 font-bold text-lg">{t('card.airline_label')}</div>
+            <div className="text-xs text-gray-500 font-mono">{t('card.economy')}</div>
         </div>
 
         <div className="flex justify-between items-center mb-6">
@@ -31,7 +33,7 @@ export const BoardingPassCard = ({ details, showLeak, isSafe, leakTarget, onInte
                 onClick={() => onInteract && onInteract('origin')}
             >
                 <div className="text-3xl font-bold text-gray-800">{origin}</div>
-                <div className="text-xs text-gray-400">Departure</div>
+                <div className="text-xs text-gray-400">{t('card.departure')}</div>
             </div>
             <Plane className="text-indigo-400 w-6 h-6 transform rotate-90" />
             <div 
@@ -39,7 +41,7 @@ export const BoardingPassCard = ({ details, showLeak, isSafe, leakTarget, onInte
                 onClick={() => onInteract && onInteract('destination')}
             >
                 <div className="text-3xl font-bold text-gray-800">{destination}</div>
-                <div className="text-xs text-gray-400">Arrival</div>
+                <div className="text-xs text-gray-400">{t('card.arrival')}</div>
             </div>
         </div>
 
@@ -48,21 +50,21 @@ export const BoardingPassCard = ({ details, showLeak, isSafe, leakTarget, onInte
                 className={`transition-colors rounded px-1 -mx-1 ${onInteract ? 'cursor-pointer hover:bg-gray-50' : ''}`}
                 onClick={() => onInteract && onInteract('flight')}
             >
-                <div className="text-gray-400 text-xs uppercase">Flight</div>
+                <div className="text-gray-400 text-xs uppercase">{t('card.flight')}</div>
                 <div className="font-bold">{flight}</div>
             </div>
             <div 
                 className={`transition-colors rounded px-1 -mx-1 ${onInteract ? 'cursor-pointer hover:bg-gray-50' : ''}`}
                 onClick={() => onInteract && onInteract('date')}
             >
-                <div className="text-gray-400 text-xs uppercase">Date</div>
+                <div className="text-gray-400 text-xs uppercase">{t('card.date')}</div>
                 <div className="font-bold">{date}</div>
             </div>
             <div 
                 className={`transition-colors rounded px-1 -mx-1 ${onInteract ? 'cursor-pointer hover:bg-gray-50' : ''}`}
                 onClick={() => onInteract && onInteract('seat')}
             >
-                <div className="text-gray-400 text-xs uppercase">Seat</div>
+                <div className="text-gray-400 text-xs uppercase">{t('card.seat')}</div>
                 <div className="font-bold text-indigo-600 text-lg">{seat}</div>
             </div>
         </div>
@@ -72,7 +74,7 @@ export const BoardingPassCard = ({ details, showLeak, isSafe, leakTarget, onInte
                 className={`transition-colors rounded px-1 -mx-1 inline-block w-full ${onInteract ? 'cursor-pointer hover:bg-gray-50' : ''}`}
                 onClick={() => onInteract && onInteract('passenger')}
              >
-                <div className="text-gray-400 text-xs uppercase">Passenger</div>
+                <div className="text-gray-400 text-xs uppercase">{t('card.passenger')}</div>
                 <div className="font-bold">{passengerName}</div>
              </div>
         </div>
@@ -88,7 +90,7 @@ export const BoardingPassCard = ({ details, showLeak, isSafe, leakTarget, onInte
                         ${isLeakVisible('pnr') ? 'bg-red-500/10 ring-2 ring-red-500 animate-pulse text-gray-800' : ''}
                         `}
                     >
-                        PNR: <span className="font-bold">{pnr}</span>
+                        {t('card.pnr_label')}: <span className="font-bold">{pnr}</span>
                     </div>
                     <div 
                         onClick={() => onInteract && onInteract('etkt')}
@@ -97,7 +99,7 @@ export const BoardingPassCard = ({ details, showLeak, isSafe, leakTarget, onInte
                         ${isLeakVisible('etkt') ? 'bg-red-500/10 ring-2 ring-red-500 animate-pulse text-gray-800' : ''}
                         `}
                     >
-                        ETKT: <span className="font-bold">{ticketNumber}</span>
+                        {t('card.etkt_label')}: <span className="font-bold">{ticketNumber}</span>
                     </div>
                 </div>
                 
@@ -120,7 +122,7 @@ export const BoardingPassCard = ({ details, showLeak, isSafe, leakTarget, onInte
             {showLeak && (
                 <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-10">
                      <span className="bg-red-600 text-white text-xs px-2 py-1 rounded font-bold shadow-lg animate-bounce">
-                        SENSITIVE DATA!
+                        {t('card.sensitive_data_leak')}
                      </span>
                 </div>
             )}
