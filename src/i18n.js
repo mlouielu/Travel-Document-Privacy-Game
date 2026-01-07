@@ -342,14 +342,14 @@ const resources = {
         "nationality": "國籍",
         "dob": "出生日期",
         "sex": "性別",
-        "expiry": "效期截止日",
+        "expiry": "護照有效日期",
         "personal_id": "身分證字號",
         "passenger_name": "乘客姓名",
         "pnr": "訂位代號 (PNR)",
-        "origin": "出發地 (GVA)",
-        "destination": "目的地 (LHR)",
+        "origin": "出發地",
+        "destination": "目的地",
         "flight_no": "航班編號",
-        "date": "Julian 日期",
+        "date": "出發日期",
         "seat": "座位號碼",
         "sequence": "報到序號"
       }
