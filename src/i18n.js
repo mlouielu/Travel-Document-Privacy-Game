@@ -158,6 +158,24 @@ const resources = {
         "authority": "Authority",
         "surname": "Surname",
         "given_names": "Given Names"
+      },
+      "decoder": {
+        "country_code": "Country Code",
+        "name": "Name",
+        "passport_no": "Passport No.",
+        "nationality": "Nationality",
+        "dob": "Date of Birth",
+        "sex": "Sex",
+        "expiry": "Date of Expiry",
+        "personal_id": "Personal ID",
+        "passenger_name": "Passenger Name",
+        "pnr": "Booking Ref (PNR)",
+        "origin": "Origin (GVA)",
+        "destination": "Destination (LHR)",
+        "flight_no": "Flight Number",
+        "date": "Julian Date",
+        "seat": "Seat Number",
+        "sequence": "Check-in Seq"
       }
     }
   },
@@ -316,6 +334,24 @@ const resources = {
         "authority": "發照機關",
         "surname": "姓",
         "given_names": "名"
+      },
+      "decoder": {
+        "country_code": "國家代碼",
+        "name": "姓名",
+        "passport_no": "護照號碼",
+        "nationality": "國籍",
+        "dob": "出生日期",
+        "sex": "性別",
+        "expiry": "效期截止日",
+        "personal_id": "身分證字號",
+        "passenger_name": "乘客姓名",
+        "pnr": "訂位代號 (PNR)",
+        "origin": "出發地 (GVA)",
+        "destination": "目的地 (LHR)",
+        "flight_no": "航班編號",
+        "date": "Julian 日期",
+        "seat": "座位號碼",
+        "sequence": "報到序號"
       }
     }
   }

@@ -22,14 +22,14 @@ export const PDF417DecoderCard = ({ details, onCorrect }) => {
   // END (57-59)
 
   const fields = [
-    { id: 'passenger_name', label: 'Passenger Name', start: 2, end: 22, color: '#ef4444' },
-    { id: 'pnr', label: 'Booking Ref (PNR)', start: 23, end: 30, color: '#3b82f6' },
-    { id: 'origin', label: 'Origin (GVA)', start: 30, end: 33, color: '#10b981' },
-    { id: 'destination', label: 'Destination (LHR)', start: 33, end: 36, color: '#06b6d4' },
-    { id: 'flight_no', label: 'Flight Number', start: 39, end: 44, color: '#f59e0b' },
-    { id: 'date', label: 'Julian Date', start: 44, end: 47, color: '#8b5cf6' },
-    { id: 'seat', label: 'Seat Number', start: 48, end: 52, color: '#ec4899' },
-    { id: 'sequence', label: 'Check-in Seq', start: 52, end: 57, color: '#6366f1' },
+    { id: 'passenger_name', label: t('decoder.passenger_name'), start: 2, end: 22, color: '#ef4444' },
+    { id: 'pnr', label: t('decoder.pnr'), start: 23, end: 30, color: '#3b82f6' },
+    { id: 'origin', label: t('decoder.origin'), start: 30, end: 33, color: '#10b981' },
+    { id: 'destination', label: t('decoder.destination'), start: 33, end: 36, color: '#06b6d4' },
+    { id: 'flight_no', label: t('decoder.flight_no'), start: 39, end: 44, color: '#f59e0b' },
+    { id: 'date', label: t('decoder.date'), start: 44, end: 47, color: '#8b5cf6' },
+    { id: 'seat', label: t('decoder.seat'), start: 48, end: 52, color: '#ec4899' },
+    { id: 'sequence', label: t('decoder.sequence'), start: 52, end: 57, color: '#6366f1' },
   ];
 
   const [matches, setMatches] = useState({});

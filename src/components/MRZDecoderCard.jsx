@@ -9,14 +9,14 @@ export const MRZDecoderCard = ({ details, onCorrect }) => {
   const line2 = mrz[1];
 
   const fields = [
-    { id: 'country_code', label: 'Country Code', line: 0, start: 2, end: 5, color: '#3b82f6' },
-    { id: 'name', label: 'Name', line: 0, start: 5, end: 25, color: '#10b981' },
-    { id: 'passport_no', label: 'Passport No.', line: 1, start: 0, end: 9, color: '#f59e0b' },
-    { id: 'nationality', label: 'Nationality', line: 1, start: 10, end: 13, color: '#06b6d4' },
-    { id: 'dob', label: 'Date of Birth', line: 1, start: 13, end: 19, color: '#8b5cf6' },
-    { id: 'sex', label: 'Sex', line: 1, start: 20, end: 21, color: '#f43f5e' },
-    { id: 'expiry', label: 'Date of Expiry', line: 1, start: 21, end: 27, color: '#ec4899' },
-    { id: 'personal_id', label: 'Personal ID', line: 1, start: 28, end: 38, color: '#6366f1' },
+    { id: 'country_code', label: t('decoder.country_code'), line: 0, start: 2, end: 5, color: '#3b82f6' },
+    { id: 'name', label: t('decoder.name'), line: 0, start: 5, end: 25, color: '#10b981' },
+    { id: 'passport_no', label: t('decoder.passport_no'), line: 1, start: 0, end: 9, color: '#f59e0b' },
+    { id: 'nationality', label: t('decoder.nationality'), line: 1, start: 10, end: 13, color: '#06b6d4' },
+    { id: 'dob', label: t('decoder.dob'), line: 1, start: 13, end: 19, color: '#8b5cf6' },
+    { id: 'sex', label: t('decoder.sex'), line: 1, start: 20, end: 21, color: '#f43f5e' },
+    { id: 'expiry', label: t('decoder.expiry'), line: 1, start: 21, end: 27, color: '#ec4899' },
+    { id: 'personal_id', label: t('decoder.personal_id'), line: 1, start: 28, end: 38, color: '#6366f1' },
   ];
 
   const [matches, setMatches] = useState({});
