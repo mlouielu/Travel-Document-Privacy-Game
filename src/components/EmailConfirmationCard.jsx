@@ -15,7 +15,10 @@ export const EmailConfirmationCard = ({ details, onInteract, showLeak, leakTarge
   return (
     <div className="w-full max-w-sm bg-white rounded-lg shadow-md overflow-hidden border border-gray-200 text-left font-sans">
       {/* Email Header */}
-      <div className="bg-gray-100 p-3 border-b border-gray-200 flex items-center gap-3">
+      <div 
+        onClick={() => handleAreaClick('header')}
+        className={`bg-gray-100 p-3 border-b border-gray-200 flex items-center gap-3 transition-colors ${onInteract ? 'cursor-pointer hover:bg-gray-200' : ''}`}
+      >
         <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white">
             <Mail className="w-4 h-4" />
         </div>
@@ -42,14 +45,20 @@ export const EmailConfirmationCard = ({ details, onInteract, showLeak, leakTarge
         </div>
 
         <div className="border-t border-b border-gray-100 py-3 space-y-3">
-            <div className="flex items-start gap-3">
+            <div 
+                onClick={() => handleAreaClick('flight_details')}
+                className={`flex items-start gap-3 rounded p-1 -m-1 transition-colors ${onInteract ? 'cursor-pointer hover:bg-gray-50' : ''}`}
+            >
                 <Calendar className="w-4 h-4 text-gray-400 mt-0.5" />
                 <div>
                     <div className="text-xs font-bold text-gray-700">{date}</div>
                     <div className="text-xs text-gray-500">{flight}</div>
                 </div>
             </div>
-             <div className="flex items-start gap-3">
+             <div 
+                onClick={() => handleAreaClick('route')}
+                className={`flex items-start gap-3 rounded p-1 -m-1 transition-colors ${onInteract ? 'cursor-pointer hover:bg-gray-50' : ''}`}
+             >
                 <MapPin className="w-4 h-4 text-gray-400 mt-0.5" />
                 <div>
                     <div className="text-xs font-bold text-gray-700">London (LHR) → New York (JFK)</div>
@@ -57,7 +66,10 @@ export const EmailConfirmationCard = ({ details, onInteract, showLeak, leakTarge
             </div>
         </div>
         
-        <div className="mt-4 flex justify-between items-center">
+        <div 
+            onClick={() => handleAreaClick('price')}
+            className={`mt-4 flex justify-between items-center rounded p-1 -m-1 transition-colors ${onInteract ? 'cursor-pointer hover:bg-gray-50' : ''}`}
+        >
              <div className="text-xs text-gray-500">Total Paid</div>
              <div className="font-bold text-gray-800">{price}</div>
         </div>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Wifi, Battery, Signal, ChevronLeft, CheckCircle } from 'lucide-react';
 
-export const AppScreenshotCard = ({ details, showLeak }) => {
+export const AppScreenshotCard = ({ details, showLeak, onInteract }) => {
   const { airline, flight, route, date, passenger, pnr } = details;
 
   return (
@@ -31,7 +31,11 @@ export const AppScreenshotCard = ({ details, showLeak }) => {
       {/* Content */}
       <div className="px-4 space-y-4">
         {/* Flight Card */}
-        <div className="bg-gray-50 p-3 rounded-lg border border-gray-200 shadow-sm">
+        <div 
+            onClick={() => showLeak ? null : (onInteract && onInteract('flight_card'))} // Disable click if showing result to prevent confusion? Or just keep it.
+            className={`bg-gray-50 p-3 rounded-lg border border-gray-200 shadow-sm transition-colors 
+                ${!showLeak && onInteract ? 'cursor-pointer hover:bg-blue-50/50' : ''}`}
+        >
              <div className="flex justify-between items-center mb-2">
                 <span className="font-bold text-gray-700">{route}</span>
                 <span className="text-xs bg-blue-100 text-blue-800 px-2 py-0.5 rounded-full">{flight}</span>
@@ -41,13 +45,19 @@ export const AppScreenshotCard = ({ details, showLeak }) => {
 
         {/* Passenger Info - The Risk! */}
         <div className="space-y-3">
-             <div className="border-b border-gray-100 pb-2">
+             <div 
+                onClick={() => showLeak ? null : (onInteract && onInteract('passenger'))}
+                className={`border-b border-gray-100 pb-2 transition-colors rounded px-1 -mx-1
+                    ${!showLeak && onInteract ? 'cursor-pointer hover:bg-blue-50/50' : ''}`}
+             >
                 <div className="text-xs text-gray-400 uppercase">Passenger</div>
                 <div className="font-medium">{passenger}</div>
              </div>
              
              <div 
-                className={`relative border-b border-gray-100 pb-2 transition-all duration-300
+                onClick={() => showLeak ? null : (onInteract && onInteract('pnr'))}
+                className={`relative border-b border-gray-100 pb-2 transition-all duration-300 rounded px-1 -mx-1
+                    ${!showLeak && onInteract ? 'cursor-pointer hover:bg-blue-50/50' : ''}
                     ${showLeak ? 'bg-red-500/10 p-1 rounded ring-2 ring-red-500' : ''}
                 `}
              >

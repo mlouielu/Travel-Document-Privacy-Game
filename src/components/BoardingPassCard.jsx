@@ -26,35 +26,55 @@ export const BoardingPassCard = ({ details, showLeak, isSafe, leakTarget, onInte
         </div>
 
         <div className="flex justify-between items-center mb-6">
-            <div className="text-center">
+            <div 
+                className={`text-center transition-colors rounded px-2 -mx-2 ${onInteract ? 'cursor-pointer hover:bg-gray-50' : ''}`}
+                onClick={() => onInteract && onInteract('origin')}
+            >
                 <div className="text-3xl font-bold text-gray-800">{origin}</div>
                 <div className="text-xs text-gray-400">Departure</div>
             </div>
             <Plane className="text-indigo-400 w-6 h-6 transform rotate-90" />
-            <div className="text-center">
+            <div 
+                className={`text-center transition-colors rounded px-2 -mx-2 ${onInteract ? 'cursor-pointer hover:bg-gray-50' : ''}`}
+                onClick={() => onInteract && onInteract('destination')}
+            >
                 <div className="text-3xl font-bold text-gray-800">{destination}</div>
                 <div className="text-xs text-gray-400">Arrival</div>
             </div>
         </div>
 
         <div className="grid grid-cols-3 gap-4 text-sm mb-4">
-            <div>
+            <div 
+                className={`transition-colors rounded px-1 -mx-1 ${onInteract ? 'cursor-pointer hover:bg-gray-50' : ''}`}
+                onClick={() => onInteract && onInteract('flight')}
+            >
                 <div className="text-gray-400 text-xs uppercase">Flight</div>
                 <div className="font-bold">{flight}</div>
             </div>
-            <div>
+            <div 
+                className={`transition-colors rounded px-1 -mx-1 ${onInteract ? 'cursor-pointer hover:bg-gray-50' : ''}`}
+                onClick={() => onInteract && onInteract('date')}
+            >
                 <div className="text-gray-400 text-xs uppercase">Date</div>
                 <div className="font-bold">{date}</div>
             </div>
-            <div>
+            <div 
+                className={`transition-colors rounded px-1 -mx-1 ${onInteract ? 'cursor-pointer hover:bg-gray-50' : ''}`}
+                onClick={() => onInteract && onInteract('seat')}
+            >
                 <div className="text-gray-400 text-xs uppercase">Seat</div>
                 <div className="font-bold text-indigo-600 text-lg">{seat}</div>
             </div>
         </div>
         
         <div className="mb-4">
-             <div className="text-gray-400 text-xs uppercase">Passenger</div>
-             <div className="font-bold">{passengerName}</div>
+             <div 
+                className={`transition-colors rounded px-1 -mx-1 inline-block w-full ${onInteract ? 'cursor-pointer hover:bg-gray-50' : ''}`}
+                onClick={() => onInteract && onInteract('passenger')}
+             >
+                <div className="text-gray-400 text-xs uppercase">Passenger</div>
+                <div className="font-bold">{passengerName}</div>
+             </div>
         </div>
 
         {/* Barcode / PNR Section */}
