@@ -43,9 +43,9 @@ export const scenarios = [
   },
   {
     id: 3,
-    title: "Safe Travels",
+    title: "Safe Travels?",
     type: "boarding-pass",
-    risky: false,
+    risky: true,
     details: {
       passengerName: "********",
       flight: "DL 112",
@@ -55,7 +55,9 @@ export const scenarios = [
       seat: "12C",
       pnr: "************",
     },
-    leak: null
+    leak: {
+      target: ["flight", "date", "seat", "origin", "destination"]
+    }
   },
   {
     id: 4,

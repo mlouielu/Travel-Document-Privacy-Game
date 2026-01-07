@@ -29,7 +29,10 @@ export const BoardingPassCard = ({ details, showLeak, isSafe, leakTarget, onInte
 
         <div className="flex justify-between items-center mb-6">
             <div 
-                className={`text-center transition-colors rounded px-2 -mx-2 ${onInteract ? 'cursor-pointer hover:bg-gray-50' : ''}`}
+                className={`text-center transition-all duration-300 rounded px-2 -mx-2 
+                ${onInteract ? 'cursor-pointer hover:bg-gray-50' : ''}
+                ${isLeakVisible('origin') ? 'bg-red-500/10 ring-2 ring-red-500 animate-pulse' : ''}
+                `}
                 onClick={() => onInteract && onInteract('origin')}
             >
                 <div className="text-3xl font-bold text-gray-800">{origin}</div>
@@ -37,7 +40,10 @@ export const BoardingPassCard = ({ details, showLeak, isSafe, leakTarget, onInte
             </div>
             <Plane className="text-indigo-400 w-6 h-6 transform rotate-90" />
             <div 
-                className={`text-center transition-colors rounded px-2 -mx-2 ${onInteract ? 'cursor-pointer hover:bg-gray-50' : ''}`}
+                className={`text-center transition-all duration-300 rounded px-2 -mx-2 
+                ${onInteract ? 'cursor-pointer hover:bg-gray-50' : ''}
+                ${isLeakVisible('destination') ? 'bg-red-500/10 ring-2 ring-red-500 animate-pulse' : ''}
+                `}
                 onClick={() => onInteract && onInteract('destination')}
             >
                 <div className="text-3xl font-bold text-gray-800">{destination}</div>
@@ -47,21 +53,30 @@ export const BoardingPassCard = ({ details, showLeak, isSafe, leakTarget, onInte
 
         <div className="grid grid-cols-3 gap-4 text-sm mb-4">
             <div 
-                className={`transition-colors rounded px-1 -mx-1 ${onInteract ? 'cursor-pointer hover:bg-gray-50' : ''}`}
+                className={`transition-all duration-300 rounded px-1 -mx-1 
+                ${onInteract ? 'cursor-pointer hover:bg-gray-50' : ''}
+                ${isLeakVisible('flight') ? 'bg-red-500/10 ring-2 ring-red-500 animate-pulse' : ''}
+                `}
                 onClick={() => onInteract && onInteract('flight')}
             >
                 <div className="text-gray-400 text-xs uppercase">{t('card.flight')}</div>
                 <div className="font-bold">{flight}</div>
             </div>
             <div 
-                className={`transition-colors rounded px-1 -mx-1 ${onInteract ? 'cursor-pointer hover:bg-gray-50' : ''}`}
+                className={`transition-all duration-300 rounded px-1 -mx-1 
+                ${onInteract ? 'cursor-pointer hover:bg-gray-50' : ''}
+                ${isLeakVisible('date') ? 'bg-red-500/10 ring-2 ring-red-500 animate-pulse' : ''}
+                `}
                 onClick={() => onInteract && onInteract('date')}
             >
                 <div className="text-gray-400 text-xs uppercase">{t('card.date')}</div>
                 <div className="font-bold">{date}</div>
             </div>
             <div 
-                className={`transition-colors rounded px-1 -mx-1 ${onInteract ? 'cursor-pointer hover:bg-gray-50' : ''}`}
+                className={`transition-all duration-300 rounded px-1 -mx-1 
+                ${onInteract ? 'cursor-pointer hover:bg-gray-50' : ''}
+                ${isLeakVisible('seat') ? 'bg-red-500/10 ring-2 ring-red-500 animate-pulse' : ''}
+                `}
                 onClick={() => onInteract && onInteract('seat')}
             >
                 <div className="text-gray-400 text-xs uppercase">{t('card.seat')}</div>

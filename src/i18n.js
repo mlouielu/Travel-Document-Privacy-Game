@@ -47,9 +47,9 @@ const resources = {
           "reason": "The National ID number is unique and permanent. Leaking it exposes you to identity theft risks in Taiwan, unlike a passport number which changes with renewal."
         },
         "3": {
-          "title": "Safe Travels",
+          "title": "Safe Travels?",
           "desc": "Heading home for the holidays. Covered the important bits just in case! 🏠❤️",
-          "safe_msg": "Great job! By covering the barcode and ticket number, you've protected your personal data."
+          "reason": "Even with your name and PNR covered, sharing your flight number, date, and seat in real-time is a major OSINT risk. It allows anyone to track your exact location and know when your home is empty."
         },
         "4": {
           "title": "Trip Booked!",
@@ -189,9 +189,9 @@ const resources = {
           "reason": "身分證字號是唯一且永久的。洩露它會讓你面臨身分盜用的風險，這與更換護照後就會改變的護照號碼不同。"
         },
         "3": {
-          "title": "平安旅途",
+          "title": "平安旅途？",
           "desc": "準備回家過節。保險起見，先把重要資訊遮起來了！🏠❤️",
-          "safe_msg": "做得好！遮住條碼與票號可以有效保護你的個人隱私。"
+          "reason": "即使遮住了姓名與訂位代號，在網路上公開航班編號、日期與座位仍有巨大的 OSINT 風險。這讓任何人都能追蹤你的確切位置，並推算出你家目前空無一人。"
         },
         "4": {
           "title": "訂好機票了！",
