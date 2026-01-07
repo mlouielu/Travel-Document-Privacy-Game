@@ -5,11 +5,11 @@ export const PassportCard = ({ details, showLeak, country = 'USA', leakTarget = 
 
   const { t, i18n } = useTranslation();
 
-  const { 
+  const {
 
-    surname, givenNames, chineseName, nationality, dob, sex, 
+    surname, givenNames, chineseName, nationality, dob, sex,
 
-    expiration, passportNumber, personalIdNumber, birthPlace, authority 
+    expiration, passportNumber, personalIdNumber, birthPlace, authority
 
   } = details;
   // Mock MRZ generation
@@ -77,6 +77,11 @@ export const PassportCard = ({ details, showLeak, country = 'USA', leakTarget = 
                     <div className="absolute top-12 left-4 w-24 h-28 bg-gray-900/95 z-30 rounded-sm flex items-center justify-center border-2 border-dashed border-white/20 rotate-1 shadow-xl">
                         <span className="text-[10px] text-white/40 font-bold uppercase rotate-12">HIDDEN</span>
                     </div>
+				  {/* Cover Passport No */}
+                    <div className="absolute top-13 left-42 w-20 h-5 bg-gray-900/95 z-30 rounded flex items-center justify-center -rotate-4 shadow-lg">
+                        <span className="text-[8px] text-white/40 font-bold uppercase">REDACTED</span>
+                    </div>
+
                     {/* Cover Name */}
                     <div className="absolute top-20 left-32 w-40 h-8 bg-gray-900/95 z-30 rounded flex items-center justify-center -rotate-1 shadow-lg">
                         <span className="text-[8px] text-white/40 font-bold uppercase">REDACTED</span>
@@ -118,21 +123,21 @@ export const PassportCard = ({ details, showLeak, country = 'USA', leakTarget = 
 
                     {/* Row 1 */}
                     <div className="flex gap-2 mb-1">
-                        <div 
+                        <div
                             onClick={() => onInteract && onInteract('type')}
                             className={`transition-colors rounded px-0.5 -mx-0.5 ${onInteract ? 'cursor-pointer hover:bg-blue-100/50' : ''}`}
                         >
                             <span className="block text-blue-700 text-[5px] uppercase">{t('passport.type')}</span>
                             <span>P</span>
                         </div>
-                        <div 
+                        <div
                             onClick={() => onInteract && onInteract('code')}
                             className={`transition-colors rounded px-0.5 -mx-0.5 ${onInteract ? 'cursor-pointer hover:bg-blue-100/50' : ''}`}
                         >
                             <span className="block text-blue-700 text-[5px] uppercase">{t('passport.code')}</span>
                             <span>TWN</span>
                         </div>
-                        <div 
+                        <div
                             onClick={() => onInteract && onInteract('passport_no')}
                             className={`flex-1 transition-colors rounded px-0.5 -mx-0.5 ${onInteract ? 'cursor-pointer hover:bg-blue-100/50' : ''}`}
                         >
@@ -142,7 +147,7 @@ export const PassportCard = ({ details, showLeak, country = 'USA', leakTarget = 
                     </div>
 
                     {/* Name */}
-                    <div 
+                    <div
                         onClick={() => onInteract && onInteract('name')}
                         className={`mb-1 transition-colors rounded px-0.5 -mx-0.5 ${onInteract ? 'cursor-pointer hover:bg-blue-100/50' : ''}`}
                     >
@@ -153,16 +158,16 @@ export const PassportCard = ({ details, showLeak, country = 'USA', leakTarget = 
 
                     {/* Nationality & ID */}
                     <div className="flex gap-2 mb-1">
-                        <div 
+                        <div
                             onClick={() => onInteract && onInteract('nationality')}
                             className={`flex-1 transition-colors rounded px-0.5 -mx-0.5 ${onInteract ? 'cursor-pointer hover:bg-blue-100/50' : ''}`}
                         >
                             <span className="block text-blue-700 text-[5px] uppercase">{t('passport.nationality')}</span>
                             <span className="text-[7px]">{nationality}</span>
                         </div>
-                        <div 
+                        <div
                              onClick={() => onInteract && onInteract('personal-id')}
-                             className={`flex-1 transition-colors duration-300 rounded px-0.5 -mx-0.5 
+                             className={`flex-1 transition-colors duration-300 rounded px-0.5 -mx-0.5
                              ${onInteract ? 'cursor-pointer hover:bg-red-50 ring-1 ring-transparent hover:ring-red-200' : ''}
                              ${isLeakVisible('personal-id') ? 'bg-red-500/20 ring-1 ring-red-500' : ''}`}>
                             <span className="block text-blue-700 text-[5px] uppercase">{t('passport.personal_id')}</span>
@@ -172,21 +177,21 @@ export const PassportCard = ({ details, showLeak, country = 'USA', leakTarget = 
 
                     {/* Sex / DOB / Place */}
                     <div className="flex gap-2 mb-1">
-                        <div 
+                        <div
                             onClick={() => onInteract && onInteract('sex')}
                             className={`transition-colors rounded px-0.5 -mx-0.5 ${onInteract ? 'cursor-pointer hover:bg-blue-100/50' : ''}`}
                         >
                             <span className="block text-blue-700 text-[5px] uppercase">{t('passport.sex')}</span>
                             <span>{sex === 'F' ? (i18n.language === 'zh-TW' ? '女' : 'F') : (i18n.language === 'zh-TW' ? '男' : 'M')}</span>
                         </div>
-                        <div 
+                        <div
                             onClick={() => onInteract && onInteract('dob')}
                             className={`transition-colors rounded px-0.5 -mx-0.5 ${onInteract ? 'cursor-pointer hover:bg-blue-100/50' : ''}`}
                         >
                             <span className="block text-blue-700 text-[5px] uppercase">{t('passport.dob')}</span>
                             <span>{dob}</span>
                         </div>
-                         <div 
+                         <div
                             onClick={() => onInteract && onInteract('place_birth')}
                             className={`transition-colors rounded px-0.5 -mx-0.5 ${onInteract ? 'cursor-pointer hover:bg-blue-100/50' : ''}`}
                          >
@@ -197,14 +202,14 @@ export const PassportCard = ({ details, showLeak, country = 'USA', leakTarget = 
 
                     {/* Dates & Authority */}
                      <div className="flex gap-2">
-                        <div 
+                        <div
                             onClick={() => onInteract && onInteract('expiry')}
                             className={`transition-colors rounded px-0.5 -mx-0.5 ${onInteract ? 'cursor-pointer hover:bg-blue-100/50' : ''}`}
                         >
                             <span className="block text-blue-700 text-[5px] uppercase">{t('passport.expiry')}</span>
                             <span>{expiration}</span>
                         </div>
-                         <div 
+                         <div
                             onClick={() => onInteract && onInteract('authority')}
                             className={`flex-1 transition-colors rounded px-0.5 -mx-0.5 ${onInteract ? 'cursor-pointer hover:bg-blue-100/50' : ''}`}
                          >
@@ -217,7 +222,7 @@ export const PassportCard = ({ details, showLeak, country = 'USA', leakTarget = 
             </div>
 
                         {/* MRZ Area */}
-                        <div 
+                        <div
                         onClick={() => onInteract && onInteract('mrz')}
                         className={`mt-auto font-mono text-[9px] text-black leading-none tracking-widest p-0.5 -mx-0.5 rounded transition-all duration-300 overflow-hidden whitespace-nowrap
                             ${onInteract ? 'cursor-pointer hover:bg-red-50 ring-1 ring-transparent hover:ring-red-200' : ''}
@@ -245,7 +250,7 @@ export const PassportCard = ({ details, showLeak, country = 'USA', leakTarget = 
             </div>
         </>
       )}
-      
+
       {showLeak && (
         <div className="absolute top-2 left-0 right-0 text-center pointer-events-none z-10">
              <span className="inline-block bg-red-600 text-white text-xs px-2 py-1 rounded font-bold shadow-lg animate-bounce">
@@ -269,14 +274,14 @@ export const PassportCard = ({ details, showLeak, country = 'USA', leakTarget = 
 
         {/* Details */}
         <div className="flex-1 text-[10px] space-y-2 font-serif text-blue-900">
-           <div 
+           <div
              onClick={() => onInteract && onInteract('surname')}
              className={`transition-colors rounded px-1 -mx-1 ${onInteract ? 'cursor-pointer hover:bg-blue-100/50' : ''}`}
            >
              <span className="block text-gray-500 uppercase text-[8px]">Surname</span>
              <span className="font-bold">{surname}</span>
            </div>
-           <div 
+           <div
              onClick={() => onInteract && onInteract('given_names')}
              className={`transition-colors rounded px-1 -mx-1 ${onInteract ? 'cursor-pointer hover:bg-blue-100/50' : ''}`}
            >
@@ -284,14 +289,14 @@ export const PassportCard = ({ details, showLeak, country = 'USA', leakTarget = 
              <span className="font-bold">{givenNames}</span>
            </div>
            <div className="flex justify-between">
-              <div 
+              <div
                 onClick={() => onInteract && onInteract('nationality')}
                 className={`transition-colors rounded px-1 -mx-1 ${onInteract ? 'cursor-pointer hover:bg-blue-100/50' : ''}`}
               >
                 <span className="block text-gray-500 uppercase text-[8px]">Nationality</span>
                 <span className="font-bold">{nationality}</span>
               </div>
-              <div 
+              <div
                 onClick={() => onInteract && onInteract('sex')}
                 className={`transition-colors rounded px-1 -mx-1 ${onInteract ? 'cursor-pointer hover:bg-blue-100/50' : ''}`}
               >
@@ -299,14 +304,14 @@ export const PassportCard = ({ details, showLeak, country = 'USA', leakTarget = 
                  <span className="font-bold">{sex}</span>
               </div>
            </div>
-           <div 
+           <div
              onClick={() => onInteract && onInteract('dob')}
              className={`transition-colors rounded px-1 -mx-1 ${onInteract ? 'cursor-pointer hover:bg-blue-100/50' : ''}`}
            >
               <span className="block text-gray-500 uppercase text-[8px]">Date of Birth</span>
               <span className="font-bold">{dob}</span>
            </div>
-           <div 
+           <div
              onClick={() => onInteract && onInteract('passport_no')}
              className={`transition-colors rounded px-1 -mx-1 ${onInteract ? 'cursor-pointer hover:bg-blue-100/50' : ''}`}
            >
@@ -317,7 +322,7 @@ export const PassportCard = ({ details, showLeak, country = 'USA', leakTarget = 
       </div>
 
             {/* MRZ Area - The Risk! */}
-            <div 
+            <div
               onClick={() => onInteract && onInteract('mrz')}
               className={`mt-auto font-mono text-[11px] leading-tight tracking-widest p-1 rounded transition-all duration-300
                 ${onInteract ? 'cursor-pointer hover:bg-red-50 ring-1 ring-transparent hover:ring-red-200' : ''}
