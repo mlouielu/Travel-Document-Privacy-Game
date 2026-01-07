@@ -20,6 +20,7 @@ const resources = {
       "is_safe": "Is this post safe?",
       "analyze_desc": "Analyze the image below.",
       "tap_instruction": "Tap the sensitive data in the image.",
+      "decode_instruction": "Match the labels to the correct data segments.",
       "safe": "Safe",
       "risky": "Risky",
       "correct": "Correct!",
@@ -105,6 +106,16 @@ const resources = {
           "title": "Passport Cover",
           "desc": "Using my passport to cover my boarding pass for extra privacy! Smart move, right? 🛂✈️",
           "reason": "Even though the boarding pass is mostly covered, the barcode sticking out at the top can still be scanned! Barcodes contain your full PNR and personal details."
+        },
+        "15": {
+          "title": "Decode MRZ",
+          "desc": "Can you identify which part of the passport MRZ corresponds to which personal detail?",
+          "reason": "The MRZ (Machine Readable Zone) encodes your name, passport number, date of birth, and expiry date in a standard format that bots and scanners can read instantly."
+        },
+        "16": {
+          "title": "Decode Boarding Pass",
+          "desc": "Can you find the hidden details in the raw boarding pass data?",
+          "reason": "Raw BCBP (Bar Coded Boarding Pass) data contains your full name, booking reference (PNR), flight number, and even your seat. This is exactly what hackers scan from your photos!"
         }
       },
       "card": {
@@ -167,6 +178,7 @@ const resources = {
       "is_safe": "這則貼文安全嗎？",
       "analyze_desc": "請分析下方的圖片。",
       "tap_instruction": "請點擊圖片中的敏感資訊。",
+      "decode_instruction": "請將標籤與正確的資料區塊配對。",
       "safe": "安全",
       "risky": "有風險",
       "correct": "正確！",
@@ -252,6 +264,16 @@ const resources = {
           "title": "護照遮蔽",
           "desc": "用護照遮住登機證來保護隱私！這樣很聰明吧？🛂✈️",
           "reason": "雖然登機證大部分都被遮住了，但露出來的條碼仍然可以被掃描！條碼包含你的完整訂位代號 (PNR) 和個人資訊。"
+        },
+        "15": {
+          "title": "解碼 MRZ",
+          "desc": "你能辨識出護照 MRZ 區塊中的各項個人資料嗎？",
+          "reason": "MRZ（機器可讀區塊）以標準格式編碼了你的姓名、護照號碼、出生日期和有效期限，掃描器和機器人可以立即讀取這些資訊。"
+        },
+        "16": {
+          "title": "解碼登機證",
+          "desc": "你能從原始的登機證資料中找出隱藏的細節嗎？",
+          "reason": "原始的 BCBP（條碼登機證）資料包含你的全名、訂位代號 (PNR)、航班編號甚至座位。這正是駭客從你的照片中掃描獲取的資訊！"
         }
       },
       "card": {

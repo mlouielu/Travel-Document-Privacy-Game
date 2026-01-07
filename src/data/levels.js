@@ -255,11 +255,36 @@ export const scenarios = [
     gamemode: "find-leak",
     risky: true,
     details: {
-      flight: "5J 101",
-      gate: "C57"
+      flight: "BA 072",
+      gate: "C54"
     },
     leak: {
       target: "barcode"
     }
+  },
+  {
+    id: 15,
+    title: "Decode MRZ",
+    type: "mrz-decode",
+    gamemode: "decode",
+    risky: true,
+    details: {
+      mrz: [
+        "P<TWNXXXX<<XXXX<XXXX<<<<<<<<<<<<<<<<<<<<<<",
+        "3000000003TWN0309010M1812290A000000000<<00"
+      ]
+    },
+    leak: null
+  },
+  {
+    id: 16,
+    title: "Decode Boarding Pass",
+    type: "pdf417-decode",
+    gamemode: "decode",
+    risky: true,
+    details: {
+      raw: "M1LEOPOLD/EMR         EZQ7O92 GVALHRBA 00723319C002F00009100"
+    },
+    leak: null
   }
 ];
