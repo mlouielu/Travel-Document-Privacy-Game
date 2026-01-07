@@ -17,6 +17,7 @@ export const Quiz = () => {
   const [hasVoted, setHasVoted] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
   const [score, setScore] = useState(0);
+  const [levelResults, setLevelResults] = useState({});
   const [gameFinished, setGameFinished] = useState(false);
 
   const currentScenario = scenarios[currentLevelIndex];
@@ -84,6 +85,7 @@ export const Quiz = () => {
     const correct = voteRisky === currentScenario.risky;
     setIsCorrect(correct);
     if (correct) setScore(s => s + 1);
+    setLevelResults(prev => ({ ...prev, [currentLevelIndex]: correct }));
     setHasVoted(true);
   };
 
@@ -98,6 +100,7 @@ export const Quiz = () => {
     if (isTargetCorrect) {
         setIsCorrect(true);
         setScore(s => s + 1);
+        setLevelResults(prev => ({ ...prev, [currentLevelIndex]: true }));
         setHasVoted(true);
     } else {
         // If they click something else that isn't the leak
@@ -105,6 +108,7 @@ export const Quiz = () => {
         // For simplicity, let's treat it as "Incorrect" choice immediately, or maybe allowed retries?
         // Let's stick to the current flow: One chance.
         setIsCorrect(false);
+        setLevelResults(prev => ({ ...prev, [currentLevelIndex]: false }));
         setHasVoted(true);
     }
   };
@@ -126,6 +130,7 @@ export const Quiz = () => {
       setHasVoted(false);
       setIsCorrect(false);
       setScore(0);
+      setLevelResults({});
       setGameFinished(false);
       window.scrollTo(0, 0);
   };
@@ -146,16 +151,18 @@ export const Quiz = () => {
     if (currentScenario.type === 'passport') {
         return <PassportCard {...commonProps} country={currentScenario.country} maskMRZ={currentScenario.maskMRZ} partialMRZMask={currentScenario.partialMRZMask} />;
     } else if (currentScenario.type === 'app-screenshot') {
-        return <AppScreenshotCard {...commonProps} />;
+        return <AppScreenshotCard {...commonProps} onInteract={handleObjectClick} />;
     } else if (currentScenario.type === 'luggage-tag') {
-        return <LuggageTagCard {...commonProps} />;
+        return <LuggageTagCard {...commonProps} onInteract={handleObjectClick} />;
     } else if (currentScenario.type === 'email') {
-        return <EmailConfirmationCard {...commonProps} />;
+        return <EmailConfirmationCard {...commonProps} onInteract={handleObjectClick} />;
     }
-    return <BoardingPassCard {...commonProps} />;
+    return <BoardingPassCard {...commonProps} onInteract={handleObjectClick} />;
   };
 
   if (gameFinished) {
+      const failedLevels = scenarios.filter((_, idx) => levelResults[idx] === false);
+
       return (
           <div className="max-w-md mx-auto animate-in zoom-in-95 duration-500">
               {/* Capture Area */}
@@ -199,7 +206,7 @@ export const Quiz = () => {
                       {t('score_display', { score, total: scenarios.length })}
                   </p>
 
-                  <div className="bg-gray-50 p-5 rounded-xl text-left text-sm">
+                  <div className="bg-gray-50 p-5 rounded-xl text-left text-sm mb-6">
                       <h3 className="font-bold mb-3 text-indigo-900 uppercase tracking-wider text-xs">{t('takeaways')}</h3>
                       <ul className="space-y-3 text-gray-700">
                           <li className="flex gap-2 items-start"><div className="w-1.5 h-1.5 rounded-full bg-indigo-400 mt-1.5 shrink-0" />{t('takeaway_1')}</li>
@@ -208,6 +215,24 @@ export const Quiz = () => {
                           <li className="flex gap-2 items-start"><div className="w-1.5 h-1.5 rounded-full bg-indigo-400 mt-1.5 shrink-0" />{t('takeaway_4')}</li>
                       </ul>
                   </div>
+
+                  {failedLevels.length > 0 && (
+                      <div className="bg-red-50 p-5 rounded-xl text-left text-sm">
+                          <h3 className="font-bold mb-3 text-red-900 uppercase tracking-wider text-xs flex items-center gap-2">
+                              <ShieldAlert className="w-4 h-4" /> {t('review_mistakes')}
+                          </h3>
+                          <ul className="space-y-2">
+                              {failedLevels.map(level => (
+                                  <li key={level.id} className="text-red-700 flex flex-col gap-0.5">
+                                      <span className="font-bold">Level {scenarios.indexOf(level) + 1}: {t(`scenarios.${level.id}.title`)}</span>
+                                      <span className="text-[11px] opacity-80 leading-snug">
+                                          {level.risky ? t(`scenarios.${level.id}.reason`) : t(`scenarios.${level.id}.safe_msg`)}
+                                      </span>
+                                  </li>
+                              ))}
+                          </ul>
+                      </div>
+                  )}
 
                   <div className="mt-6 pt-6 border-t border-gray-100 flex justify-center">
                       <div className="flex items-center gap-2">

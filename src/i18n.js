@@ -34,6 +34,7 @@ const resources = {
       "takeaway_2": "Passport MRZ lines are machine-readable and contain full PII.",
       "takeaway_3": "Always cover sensitive data physically or digitally before sharing.",
       "takeaway_4": "Sharing trip details beforehand can lead to doxxing. Share later or mask the dates!",
+      "review_mistakes": "Review Mistakes",
       "scenarios": {
         "1": {
           "title": "Airport Check-in",
@@ -175,6 +176,7 @@ const resources = {
       "takeaway_2": "護照底部的 MRZ 區塊可被機器讀取並包含所有個人資料。",
       "takeaway_3": "分享照片前，請務必遮蓋敏感資訊。",
       "takeaway_4": "提前分享行程可能導致被肉搜 (doxxing)。請在行程結束後分享，或遮蔽日期！",
+      "review_mistakes": "檢討錯誤",
       "scenarios": {
         "1": {
           "title": "機場報到",
