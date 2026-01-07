@@ -7,14 +7,14 @@ export const LandingPage = ({ onStart }) => {
 
   return (
     <div className="flex flex-col items-center justify-center min-h-[80vh] px-6 text-center animate-in fade-in duration-700 pb-20">
-      
+
       {/* Icon Cluster */}
       <div className="relative mb-10 mt-10">
         <div className="absolute inset-0 bg-indigo-500 blur-3xl opacity-20 rounded-full"></div>
-        <div className="relative w-32 h-32 bg-white rounded-3xl shadow-xl flex items-center justify-center rotate-3 border-4 border-indigo-50 z-10">
+        <div className="relative w-32 h-32 bg-white rounded-3xl shadow-xl flex items-center justify-center rotate-3 border-4 border-indigo-50 z-5">
            <ShieldCheck className="w-16 h-16 text-indigo-600" />
         </div>
-        
+
         {/* Floating Icons */}
         <div className="absolute -top-4 -right-4 w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center shadow-lg animate-bounce delay-100">
             <Plane className="w-6 h-6 text-blue-600" />
@@ -30,12 +30,12 @@ export const LandingPage = ({ onStart }) => {
       <h1 className="text-3xl md:text-4xl font-black text-gray-900 mb-4 tracking-tight leading-tight">
         {t('landing_title')}
       </h1>
-      
+
       <p className="text-lg text-gray-500 max-w-md mb-10 leading-relaxed">
         {t('landing_subtitle')}
       </p>
 
-      <button 
+      <button
         onClick={onStart}
         className="group relative inline-flex items-center justify-center px-10 py-4 font-bold text-white transition-all duration-200 bg-indigo-600 text-lg rounded-full hover:bg-indigo-700 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-600 active:scale-95 mb-16"
       >
@@ -48,7 +48,7 @@ export const LandingPage = ({ onStart }) => {
             <AlertTriangle className="w-5 h-5" />
             <h3 className="font-bold uppercase tracking-wider text-sm">{t('horror_title')}</h3>
           </div>
-          
+
           <ul className="space-y-4">
               <li className="flex gap-3 items-start">
                   <div className="w-1.5 h-1.5 rounded-full bg-red-400 mt-2 shrink-0"></div>
@@ -68,4 +68,3 @@ export const LandingPage = ({ onStart }) => {
     </div>
   );
 };
-
