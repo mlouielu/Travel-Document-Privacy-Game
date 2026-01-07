@@ -76,28 +76,33 @@ const resources = {
           "safe_msg": "Perfect! Keeping your address private prevents home security risks."
         },
         "9": {
+          "title": "Careful Cover?",
+          "desc": "I used a sticker to cover my name and passport number. Safe to post? 🇹🇼",
+          "reason": "The sticker covers the start of the MRZ, but the end (where your National ID is) is still visible! 🇹🇼 passports put the ID in the second line."
+        },
+        "10": {
           "title": "Luggage Tag",
           "desc": "My bags are packed and ready to go! 🧳✈️ #TravelReady",
           "reason": "Never post your home address on a public luggage tag photo! It tells everyone where you live and that your house is currently empty."
         },
-        "10": {
+        "11": {
           "title": "Trip Confirmation",
           "desc": "Got the email! It's official! 📧✨ #TravelPlans",
           "reason": "Your Booking Reference (PNR) is the key to your entire trip. Don't share it!"
         },
-        "11": {
+        "12": {
           "title": "At the Gate",
           "desc": "Waiting to board! See you on the other side! 🛫",
           "reason": "Your PNR, Ticket Number, and QR code are all sensitive. Anyone can use them to access or modify your booking!"
         },
-        "12": {
+        "13": {
           "title": "Ready to Fly",
           "desc": "Passports ready! Let's go! 🛂✈️",
           "reason": "Taiwan's MRZ specifically includes your National ID number! Even without a machine, it's easy to decode and steal your permanent identity info."
         }
       },
       "card": {
-        "airline_label": "QUIZ AIRLINE",
+        "airline_label": "AIRLINE",
         "economy": "ECONOMY",
         "departure": "Departure",
         "arrival": "Arrival",
@@ -212,28 +217,33 @@ const resources = {
           "safe_msg": "完美！隱藏地址可避免住家安全風險。"
         },
         "9": {
+          "title": "小心遮蔽？",
+          "desc": "我用貼紙遮住了姓名和護照號碼。這樣發文安全嗎？🇹🇼",
+          "reason": "貼紙只遮住了 MRZ 的前半部，但後半部（包含身分證字號）仍然清晰可見！台灣護照將身分證字號放在第二行後段。"
+        },
+        "10": {
           "title": "行李吊牌",
           "desc": "行李打包好了，準備出發！🧳✈️ #旅行",
           "reason": "千萬不要公開行李吊牌上的住家地址！這會告訴所有人你住在哪裡，而且你現在不在家。"
         },
-        "10": {
+        "11": {
           "title": "行程確認",
           "desc": "收到確認信了！正式定案！📧✨ #旅行計畫",
           "reason": "你的訂位代號 (PNR) 是你整趟旅程的關鍵鑰匙。千萬別分享出去！"
         },
-        "11": {
+        "12": {
           "title": "登機門前",
           "desc": "準備登機！我們目的地見！🛫",
           "reason": "您的訂位代號、機票號碼與 QR code 都很敏感。任何人都可以用它們來存取或修改您的行程！"
         },
-        "12": {
+        "13": {
           "title": "準備起飛",
           "desc": "護照準備好了！出發吧！🛂✈️",
           "reason": "台灣護照的 MRZ 區塊特別包含了你的身分證字號！即使不用機器，也很容易被解讀並盜用你的永久身分資訊。"
         }
       },
       "card": {
-        "airline_label": "魁茲航空",
+        "airline_label": "航空公司",
         "economy": "經濟艙",
         "departure": "出發地",
         "arrival": "目的地",

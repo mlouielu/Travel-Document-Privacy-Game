@@ -1,7 +1,7 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 
-export const PassportCard = ({ details, showLeak, country = 'USA', leakTarget = 'mrz', onInteract, partialCover = false, isSafe = false, maskMRZ = false }) => {
+export const PassportCard = ({ details, showLeak, country = 'USA', leakTarget = 'mrz', onInteract, partialCover = false, isSafe = false, maskMRZ = false, partialMRZMask = false }) => {
 
   const { t, i18n } = useTranslation();
 
@@ -92,6 +92,13 @@ export const PassportCard = ({ details, showLeak, country = 'USA', leakTarget = 
             {maskMRZ && (
                 <div className="absolute bottom-2 left-2 right-2 h-10 bg-gray-900/98 z-30 rounded flex items-center justify-center border border-white/10 shadow-lg">
                     <span className="text-[8px] text-white/30 font-bold tracking-[0.5em]">REDACTED DATA</span>
+                </div>
+            )}
+
+            {/* Partial MRZ Mask (Left Side Only) */}
+            {partialMRZMask && (
+                <div className="absolute bottom-2 left-2 w-44 h-10 bg-gray-900/98 z-30 rounded-l flex items-center justify-center border-y border-l border-white/10 shadow-lg">
+                    <span className="text-[8px] text-white/30 font-bold tracking-[0.2em] ml-2">PARTIAL MASK</span>
                 </div>
             )}
 

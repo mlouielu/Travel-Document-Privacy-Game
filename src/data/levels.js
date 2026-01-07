@@ -6,7 +6,7 @@ export const scenarios = [
     risky: true,
     details: {
       passengerName: "SMITH/JANE",
-      flight: "QZ 524",
+      flight: "UA 524",
       origin: "SFO",
       destination: "NRT",
       date: "14 OCT",
@@ -48,7 +48,7 @@ export const scenarios = [
     risky: false,
     details: {
       passengerName: "HIDDEN",
-      flight: "QZ 112",
+      flight: "DL 112",
       origin: "LHR",
       destination: "JFK",
       date: "22 DEC",
@@ -64,7 +64,7 @@ export const scenarios = [
     risky: true,
     details: {
       airline: "SkyWays",
-      flight: "QZ 999",
+      flight: "SW 999",
       route: "LAX - SYD",
       date: "10 NOV",
       passenger: "ALEX JOHNSON",
@@ -81,7 +81,7 @@ export const scenarios = [
     risky: false,
     details: {
       airline: "SkyWays",
-      flight: "QZ 101",
+      flight: "SW 101",
       route: "JFK - LHR",
       date: "12 DEC",
       passenger: "ALEX JOHNSON",
@@ -142,6 +142,31 @@ export const scenarios = [
   },
   {
     id: 9,
+    title: "Careful Cover?",
+    type: "passport",
+    country: "TWN",
+    risky: true,
+    partialCover: true,
+    partialMRZMask: true,
+    details: {
+      surname: "WU",
+      givenNames: "YI-CHEN",
+      chineseName: "吳怡君",
+      nationality: "TAIWAN",
+      personalIdNumber: "C200000000",
+      dob: "20 SEP 1996",
+      birthPlace: "TAICHUNG",
+      sex: "F",
+      expiration: "20 SEP 2036",
+      authority: "MINISTRY OF FOREIGN AFFAIRS",
+      passportNumber: "555444333"
+    },
+    leak: {
+      target: "mrz"
+    }
+  },
+  {
+    id: 10,
     title: "Luggage Tag",
     type: "luggage-tag",
     gamemode: "find-leak",
@@ -157,7 +182,7 @@ export const scenarios = [
     }
   },
   {
-    id: 10,
+    id: 11,
     title: "Trip Confirmation",
     type: "email",
     gamemode: "find-leak",
@@ -167,7 +192,7 @@ export const scenarios = [
       pnr: "OC815X",
       passenger: "JACK SHEPHARD",
       date: "22 SEP",
-      flight: "QZ 815",
+      flight: "OC 815",
       price: "$850.00"
     },
     leak: {
@@ -175,14 +200,14 @@ export const scenarios = [
     }
   },
   {
-    id: 11,
+    id: 12,
     title: "At the Gate",
     type: "boarding-pass",
     gamemode: "find-leak",
     risky: true,
     details: {
       passengerName: "FORD/JAMES",
-      flight: "QZ 202",
+      flight: "SA 202",
       origin: "LAX",
       destination: "SYD",
       date: "15 DEC",
@@ -195,7 +220,7 @@ export const scenarios = [
     }
   },
   {
-    id: 12,
+    id: 13,
     title: "Ready to Fly",
     type: "passport",
     country: "TWN",

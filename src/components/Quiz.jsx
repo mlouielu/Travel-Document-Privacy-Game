@@ -144,7 +144,7 @@ export const Quiz = () => {
     };
 
     if (currentScenario.type === 'passport') {
-        return <PassportCard {...commonProps} country={currentScenario.country} maskMRZ={currentScenario.maskMRZ} />;
+        return <PassportCard {...commonProps} country={currentScenario.country} maskMRZ={currentScenario.maskMRZ} partialMRZMask={currentScenario.partialMRZMask} />;
     } else if (currentScenario.type === 'app-screenshot') {
         return <AppScreenshotCard {...commonProps} />;
     } else if (currentScenario.type === 'luggage-tag') {
