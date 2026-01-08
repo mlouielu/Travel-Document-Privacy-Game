@@ -86,7 +86,7 @@ const resources = {
         "10": {
           "title": "Luggage Tag",
           "desc": "My bags are packed and ready to go! 🧳✈️ #TravelReady",
-          "reason": "Never post your home address on a public luggage tag photo! It tells everyone where you live and that your house is currently empty."
+          "reason": "Never post your phone number or home address on a public luggage tag photo! It tells everyone where you live and that your house is currently empty."
         },
         "11": {
           "title": "Trip Confirmation",
@@ -294,7 +294,7 @@ const resources = {
         "10": {
           "title": "行李吊牌",
           "desc": "行李打包好了，準備出發！🧳✈️ #旅行",
-          "reason": "千萬不要公開行李吊牌上的住家地址！這會告訴所有人你住在哪裡，而且你現在不在家。"
+          "reason": "千萬不要公開行李吊牌上的電話號碼或住家地址！這會告訴所有人你住在哪裡，而且你現在不在家。"
         },
         "11": {
           "title": "行程確認",

@@ -182,7 +182,7 @@ export const scenarios = [
       email: "jane.travels@email.com"
     },
     leak: {
-      target: "address"
+      target: ["address", "phone", "email"]
     }
   },
   {
