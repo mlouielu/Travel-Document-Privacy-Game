@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { toPng } from 'html-to-image';
 import { scenarios } from '../data/levels';
@@ -26,6 +26,17 @@ export const Quiz = () => {
 
   const currentScenario = scenarios[currentLevelIndex];
   const isLastLevel = currentLevelIndex === scenarios.length - 1;
+
+  useEffect(() => {
+    if (gameFinished && typeof window.gtag === 'function') {
+      const failedLevels = scenarios.filter((_, idx) => levelResults[idx] === false);
+      window.gtag('event', 'game_completed', {
+        score: score,
+        total_levels: scenarios.length,
+        failed_levels: failedLevels.map(l => l.id).join(',')
+      });
+    }
+  }, [gameFinished, levelResults, score]);
 
   const handleShareThreads = () => {
     const text = t('share_text', { score, total: scenarios.length }) + " " + window.location.href;
